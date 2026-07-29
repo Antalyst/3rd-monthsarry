@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Jovelyn — Our Second Month</title>
+    <!-- Google Fonts Integration -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- DESIGN SYSTEM TOKENS (DESIGN.md) --- */
+        :root {
+            /* Colors */
+            --background: #fdf9ee;
+            --surface: #fdf9ee;
+            --surface-dim: #dddacf;
+            --surface-bright: #fdf9ee;
+            --surface-container-lowest: #ffffff;
+            --surface-container-low: #f7f4e8;
+            --surface-container: #f1eee3;
+            --surface-container-high: #ebe8dd;
+            --surface-container-highest: #e5e2d8;
+            
+            --on-surface: #1c1c15;
+            --on-surface-variant: #554240;
+            
+            --primary: #9b433a;
+            --on-primary: #ffffff;
+            --primary-container: #e98074;
+            --on-primary-container: #641b15;
+            
+            --secondary: #6c5c44;
+            --on-secondary: #ffffff;
+            --secondary-container: #f6dfc0;
+            --on-secondary-container: #726249;
+            
+            --outline: #88726f;
+            --outline-variant: #dbc1bd;
+            
+            /* Typography Configurations */
+            --font-serif: 'EB Garamond', serif;
+            --font-sans: 'DM Sans', sans-serif;
+            
+            /* Shadows & Border Radius */
+            --shadow-glow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 10px 30px rgba(155, 67, 58, 0.08);
+            --rounded-sm: 0.25rem;
+            --rounded-default: 0.5rem;
+            --rounded-md: 0.75rem; /* 12px as per DESIGN.md */
+            --rounded-lg: 1rem;
+            --rounded-xl: 1.5rem;
+            --rounded-full: 9999px;
+            
+            /* Animation transitions */
+            --transition-smooth: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* --- BASE STYLING --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--on-surface);
+            font-family: var(--font-sans);
+            font-size: 16px;
+            line-height: 1.7;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* --- CORE WRAPPER --- */
+        .wrapper {
+            max-width: 800px; /* Centered 800px single column page limit */
+            width: 100%;
+            padding: 0 var(--rounded-xl);
+            position: relative;
+        }
+
+        /* --- HEADER NAVIGATION --- */
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--surface-container);
+            margin-bottom: 3rem;
+        }
+
+        .header-nav .brand {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            font-weight: 500;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+        }
+
+        .header-nav svg {
+            cursor: pointer;
+            stroke: var(--on-surface-variant);
+            transition: var(--transition-smooth);
+        }
+
+        .header-nav svg:hover {
+            stroke: var(--primary);
+            transform: scale(1.08);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: var(--on-surface);
+            max-width: 720px;
+            margin-bottom: 2.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+                line-height: 1.3;
+            }
+        }
+
+        /* Main Image Container mimicking the mock exactly */
+        .hero-img-container {
+            width: 100%;
+            border-radius: var(--rounded-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-glow);
+            border: 1px solid var(--outline-variant);
+            aspect-ratio: 4 / 5;
+            max-height: 680px;
+            position: relative;
+            background-color: var(--surface-container-low);
+        }
+
+        .hero-img-container img, .hero-img-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+            display: block;
+        }
+
+        .hero-img-container:hover img, .hero-img-container:hover video {
+            transform: scale(1.02);
+        }
+
+        /* --- TAB CONTAINER CONTROLLER --- */
+        .tabs-content {
+            position: relative;
+            min-height: 400px;
+        }
+
+        .tab-panel {
+            display: none;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: var(--transition-smooth);
+        }
+
+        .tab-panel.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- CARD STYLING (THE LETTER) --- */
+        .letter-card {
+            background-color: var(--surface-container-low);
+            border: 1px solid var(--outline-variant);
+            border-radius: var(--rounded-md);
+            padding: 3.5rem 2.5rem;
+            margin-bottom: 5rem;
+            box-shadow: var(--shadow-glow);
+            text-align: center;
+            position: relative;
+        }
+
+        @media (max-width: 480px) {
+            .letter-card {
+                padding: 2.5rem 1.5rem;
+            }
+        }
+
+        .letter-card .card-ornament {
+            margin-bottom: 2rem;
+            color: var(--outline);
+        }
+
+        .letter-card p {
+            font-family: var(--font-sans);
+            font-size: 1.1rem;
+            line-height: 1.75;
+            color: var(--on-surface-variant);
+            margin-bottom: 2rem;
+            text-align: justify;
+            text-align-last: center;
+        }
+
+        .letter-card p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .letter-card .divider-line {
+            width: 1px;
+            height: 40px;
+            background-color: var(--outline-variant);
+            margin: 2.5rem auto;
+        }
+
+        .letter-card .heart-badge {
+            color: var(--primary-container);
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            display: inline-block;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        /* --- THE GALLERY (ASYMMETRIC GRID) --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--rounded-md);
+            overflow: hidden;
+            border: 1px solid var(--outline-variant);
+            box-shadow: var(--shadow-glow);
+            background-color: var(--surface-container-low);
+            transition: var(--transition-smooth);
+        }
+
+        .gallery-item img, .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: var(--transition-smooth);
+        }
+
+        /* Hover States */
+        .gallery-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--outline);
+        }
+
+        .gallery-item:hover img, .gallery-item:hover video {
+            transform: scale(1.04);
+        }
+
+        /* Image Sizing Classes */
+        .gallery-wide {
+            grid-column: span 2;
+            aspect-ratio: 16 / 10;
+        }
+
+        .gallery-normal {
+            aspect-ratio: 1 / 1;
+        }
+
+        .gallery-tall {
+            grid-row: span 2;
+            aspect-ratio: 9 / 16;
+        }
+
+        @media (max-width: 600px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .gallery-wide, .gallery-tall, .gallery-normal {
+                grid-column: span 1 !important;
+                grid-row: span 1 !important;
+                aspect-ratio: 1 / 1 !important;
+            }
+        }
+
+        /* Subtle pill chip styling overlayed on images */
+        .img-tag {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            background: rgba(253, 249, 238, 0.9);
+            backdrop-filter: blur(4px);
+            border: 1px solid var(--outline-variant);
+            color: var(--on-surface-variant);
+            padding: 0.35rem 0.85rem;
+            border-radius: var(--rounded-full);
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            z-index: 2;
+        }
+
+        /* --- NOTES SECTION (INTERACTIVE TIMELINE) --- */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            margin-bottom: 5rem;
+            padding: 0 1rem;
+        }
+
+        .timeline-card {
+            background-color: var(--surface-container-low);
+            border: 1px solid var(--outline-variant);
+            border-radius: var(--rounded-md);
+            padding: 2rem;
+            position: relative;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .timeline-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-card .timeline-date {
+            font-size: 0.8rem;
+            color: var(--outline);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .timeline-card p {
+            color: var(--on-surface-variant);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* --- FOOTER & TABS CONTROL NAVIGATION --- */
+        .footer-tabs-control {
+            border-top: 1px solid var(--surface-container-highest);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .monthsary-accent-banner {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--primary);
+            margin-bottom: 2.5rem;
+        }
+
+        .monthsary-accent-banner span {
+            text-transform: uppercase;
+            font-style: normal;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            display: block;
+            margin-top: 0.5rem;
+            color: var(--on-surface-variant);
+        }
+
+        /* The dynamic footer tab links */
+        .footer-nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-nav-links a {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--outline);
+            text-decoration: none;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 0.5rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 1.5px;
+            background-color: var(--primary);
+            transition: var(--transition-smooth);
+            transform: translateX(-50%);
+        }
+
+        .footer-nav-links a.active {
+            color: var(--on-surface);
+        }
+
+        .footer-nav-links a.active::after {
+            width: 100%;
+        }
+
+        .footer-signature {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: var(--outline);
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-love-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--outline-variant);
+        }
+
+        /* --- KEYFRAME ANIMATIONS --- */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.15); opacity: 1; }
+        }
+
+        /* --- UTILITY CLASSES --- */
+        .text-center { text-align: center !important; }
+
+        /* --- MUSIC PLAYER --- */
+        .music-player {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 55px;
+            height: 55px;
+            background-color: var(--primary);
+            color: var(--on-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-glow);
+            z-index: 1000;
+            transition: var(--transition-smooth);
+        }
+        .music-player:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-hover);
+        }
+        .music-player svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- FLOATING MUSIC PLAYER -->
+    <div class="music-player" id="musicToggle">
+        <svg id="playIcon" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+        </svg>
+        <svg id="pauseIcon" viewBox="0 0 24 24" style="display: none;">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+        </svg>
+    </div>
+    <audio id="bgMusic" loop>
+        <source src="anyone.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="wrapper">
+        
+        <!-- HEADER -->
+        <header class="header-nav">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            
+            <a href="#" class="brand">for Jovelyn</a>
+            
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                <line x1="4" y1="12" x2="20" y2="12"></line>
+                <line x1="4" y1="6" x2="20" y2="6"></line>
+                <line x1="4" y1="18" x2="20" y2="18"></line>
+            </svg>
+        </header>
+
+        <!-- MAIN DYNAMIC CONTENT CONTAINER -->
+        <main class="tabs-content">
+
+            <!-- TAB 1: OUR STORY (Default Active) -->
+            <section id="story" class="tab-panel active">
+                
+                <!-- HERO INTRO -->
+                <div class="hero">
+                    <h1>To the girl who has been my constant for 8 years, and my world for the last two months.</h1>
+                    <div class="hero-img-container">
+                        <img src="be-with-her-photos/83e72057-be7f-4429-86c7-5ee868d18125.jpg" alt="Andrew and Jovelyn">
+                    </div>
+                </div>
+
+                <!-- LETTER WRAPPER CARD -->
+                <article class="letter-card">
+                    <div class="card-ornament">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                            <path d="M12 3v18M3 12h18M5 5l14 14M19 5L5 19"/>
+                        </svg>
+                    </div>
+
+                    <p>Love, looking at us now, it’s crazy to think that our story started with just a simple Facebook connection eight years ago. We spent years knowing each other online, but having you by my side now feels so much better than I ever imagined.</p>
+                    
+                    <p>Thank you for all the walks, our quiet moments, the dates filled with laughter, and for making me feel so comfortable just by being there.</p>
+                    
+                    <div class="divider-line"></div>
+                    
+                    <p>Our second month together has been even more beautiful. After almost ten years of knowing each other, I'm grateful that we finally have this chance. Thank you for choosing me, trusting me, and making every moment of this second month so special.</p>
+                    
+                    <span class="heart-badge">❤️</span>
+                </article>
+
+                <!-- ASYMMETRIC HIGHLIGHTS IMAGES -->
+                <div class="gallery-grid">
+                    <div class="gallery-item gallery-tall">
+                        <video src="videos/69eacdc8-fb62-43c0-8b57-7f55b8f95f08.mp4" autoplay loop muted playsinline></video>
+                        <span class="img-tag">Our Spot</span>
+                    </div>
+                    <div class="gallery-item gallery-normal">
+                        <img src="be-with-her-photos/47ea876e-b7fb-429f-a1cc-e37d81b1a3d4.jpg" alt="Smiling together">
+                    </div>
+                    <div class="gallery-item gallery-wide">
+                        <img src="be-with-her-photos/4b296b11-7915-4cb5-acc9-effe0f042861.jpg" alt="Holding hands closeup">
+                        <span class="img-tag">Forever</span>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- TAB 2: GALLERY -->
+            <section id="gallery" class="tab-panel">
+                <div class="hero">
+                    <h1>Every little chapter of us, captured.</h1>
+                </div>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item gallery-wide">
+                        <video src="videos/8897ded5-65fa-4886-be2f-9a857ab29c2b.mp4" autoplay loop muted playsinline></video>
+                        <span class="img-tag">The Beginning</span>
+                    </div>
+                    <div class="gallery-item gallery-normal">
+                        <img src="be-with-her-photos/6b3eed57-1d47-4d9a-9d09-0c3fdc82ff79.jpg" alt="Walking away hand in hand">
+                    </div>
+                    <div class="gallery-item gallery-normal">
+                        <img src="be-with-her-photos/6bd49784-53fe-4ffa-b8e2-59b30bdc4de0.jpg" alt="Close selfie detail">
+                    </div>
+                    <div class="gallery-item gallery-wide">
+                        <img src="be-with-her-photos/c007160a-a211-48e5-bd62-e0509f415076.jpg" alt="Cozy sit together">
+                        <span class="img-tag">Warmth</span>
+                    </div>
+                    <div class="gallery-item gallery-normal">
+                        <img src="be-with-her-photos/83e72057-be7f-4429-86c7-5ee868d18125.jpg" alt="Quiet moments">
+                        <span class="img-tag">Quiet moments</span>
+                    </div>
+                    <div class="gallery-item gallery-normal">
+                        <img src="be-with-her-photos/47ea876e-b7fb-429f-a1cc-e37d81b1a3d4.jpg" alt="Close detail">
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 3: NOTES -->
+            <section id="notes" class="tab-panel">
+                <div class="hero">
+                    <h1>Little notes on things I adore about us.</h1>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-card">
+                        <span class="timeline-date">The Virtual Days</span>
+                        <h3>8 Years of Connection</h3>
+                        <p>For almost eight years, we stayed connected through social media while living our own lives. Looking back now, it's amazing to realize that we already had each other all along.</p>
+                    </div>
+
+                    <div class="timeline-card">
+                        <span class="timeline-date">The Little Things</span>
+                        <h3>Effortless Ease</h3>
+                        <p>Just sitting together, holding hands, and enjoying the quiet moments makes me happy. We don't have to talk all the time because being together already feels enough.</p>
+                    </div>
+
+                    <div class="timeline-card">
+                        <span class="timeline-date">The Promise</span>
+                        <h3>Our Next Chapter</h3>
+                        <p>We started with messages and video calls, and now we've just celebrated our second month making real memories together. I look forward to spending many more months with you and making each one better than the last.</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- FOOTER & TAB NAVIGATION INTEGRATION -->
+        <footer class="footer-tabs-control">
+            <div class="monthsary-accent-banner">
+                Happy 2nd Monthsary, My Love.
+                <span>— Andrew</span>
+            </div>
+
+            <!-- Intersecting Tab Links exactly as shown in the mockup -->
+            <nav class="footer-nav-links">
+                <a class="tab-link active" data-tab="story">Our Story</a>
+                <a class="tab-link" data-tab="gallery">Gallery</a>
+                <a class="tab-link" data-tab="notes">Notes</a>
+            </nav>
+
+            <div class="footer-signature">Jovelyn & Andrew</div>
+            <div class="footer-love-tag">WITH LOVE, ANDREW</div>
+        </footer>
+
+    </div>
+
+    <!-- VANILLA JS TAB AND SMOOTH TRANSITIONS CONTROLLER -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabLinks = document.querySelectorAll('.tab-link');
+            const tabPanels = document.querySelectorAll('.tab-panel');
+
+            tabLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    const targetTabId = link.getAttribute('data-tab');
+
+                    // Remove active state from all nav link indicators
+                    tabLinks.forEach(item => item.classList.remove('active'));
+                    // Add active class to clicked tab link
+                    link.classList.add('active');
+
+                    // Handle fade-out transition for all panels, then activate target panel
+                    tabPanels.forEach(panel => {
+                        if (panel.classList.contains('active')) {
+                            panel.style.opacity = '0';
+                            panel.style.transform = 'translateY(15px)';
+                            
+                            setTimeout(() => {
+                                panel.classList.remove('active');
+                                
+                                const targetPanel = document.getElementById(targetTabId);
+                                targetPanel.classList.add('active');
+                                
+                                // Trigger animation sequence
+                                setTimeout(() => {
+                                    targetPanel.style.opacity = '1';
+                                    targetPanel.style.transform = 'translateY(0)';
+                                }, 50);
+
+                            }, 350); // Timeout matched with CSS smooth transitions
+                        }
+                    });
+
+                    // Scroll viewport softly to the main navigation boundary
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            // --- MUSIC PLAYER LOGIC ---
+            const music = document.getElementById('bgMusic');
+            const musicToggle = document.getElementById('musicToggle');
+            const playIcon = document.getElementById('playIcon');
+            const pauseIcon = document.getElementById('pauseIcon');
+            let isPlaying = false;
+
+            function toggleMusic() {
+                if (isPlaying) {
+                    music.pause();
+                    playIcon.style.display = 'block';
+                    pauseIcon.style.display = 'none';
+                } else {
+                    music.play().then(() => {
+                        playIcon.style.display = 'none';
+                        pauseIcon.style.display = 'block';
+                    }).catch(e => console.log("Autoplay blocked:", e));
+                }
+                isPlaying = !isPlaying;
+            }
+
+            musicToggle.addEventListener('click', toggleMusic);
+
+            // Attempt to autoplay on the first user interaction (browser policy workaround)
+            document.body.addEventListener('click', () => {
+                if (!isPlaying) toggleMusic();
+            }, { once: true });
+        });
+    </script>
+</body>
+</html>
