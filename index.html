@@ -3,61 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Jovelyn — Our Third Month</title>
-    <!-- Google Fonts Integration -->
+    <title>For You Our Fourth Month</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+
     <style>
-        /* --- DESIGN SYSTEM TOKENS (DESIGN.md) --- */
+        /* --- DESIGN TOKENS --- */
         :root {
-            /* Colors */
-            --background: #fdf9ee;
-            --surface: #fdf9ee;
-            --surface-dim: #dddacf;
-            --surface-bright: #fdf9ee;
-            --surface-container-lowest: #ffffff;
-            --surface-container-low: #f7f4e8;
-            --surface-container: #f1eee3;
-            --surface-container-high: #ebe8dd;
-            --surface-container-highest: #e5e2d8;
-            
-            --on-surface: #1c1c15;
-            --on-surface-variant: #554240;
-            
-            --primary: #9b433a;
+            --background: #f7f2fb;
+            --paper: #fdfbff;
+            --surface-container-low: #f4edfa;
+            --surface-container: #ece1f5;
+            --surface-container-high: #e3d3ef;
+
+            --on-surface: #221a2b;
+            --on-surface-variant: #5a4a68;
+
+            --primary: #6c3fa0;
+            --primary-deep: #4a2474;
             --on-primary: #ffffff;
-            --primary-container: #e98074;
-            --on-primary-container: #641b15;
-            
-            --secondary: #6c5c44;
-            --on-secondary: #ffffff;
-            --secondary-container: #f6dfc0;
-            --on-secondary-container: #726249;
-            
-            --outline: #88726f;
-            --outline-variant: #dbc1bd;
-            
-            /* Typography Configurations */
+            --primary-container: #c9a0e8;
+            --secondary: #9d5fc0;
+            --blush: #e8a3d6;
+
+            --outline: #83709a;
+            --outline-variant: #dcc9ec;
+            --ink: #2b1d38;
+
             --font-serif: 'EB Garamond', serif;
             --font-sans: 'DM Sans', sans-serif;
-            
-            /* Shadows & Border Radius */
-            --shadow-glow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            --shadow-hover: 0 10px 30px rgba(155, 67, 58, 0.08);
-            --rounded-sm: 0.25rem;
-            --rounded-default: 0.5rem;
-            --rounded-md: 0.75rem; /* 12px as per DESIGN.md */
-            --rounded-lg: 1rem;
-            --rounded-xl: 1.5rem;
-            --rounded-full: 9999px;
-            
-            /* Animation transitions */
-            --transition-smooth: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            --font-hand: 'Caveat', cursive;
+
+            --shadow-soft: 0 6px 28px rgba(76, 33, 122, 0.10);
+            --shadow-lift: 0 18px 44px rgba(76, 33, 122, 0.18);
+            --radius: 0.75rem;
+            --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+            --header-h: 62px;
         }
 
-        /* --- BASE STYLING --- */
+        /* --- BASE --- */
         * {
             margin: 0;
             padding: 0;
@@ -65,9 +50,7 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-padding-top: var(--header-h); }
 
         body {
             background-color: var(--background);
@@ -76,26 +59,194 @@
             font-size: 16px;
             line-height: 1.7;
             overflow-x: hidden;
-            display: flex;
-            justify-content: center;
         }
 
-        /* --- CORE WRAPPER --- */
+        body.locked { overflow: hidden; }
+
+        img, video { display: block; }
+
         .wrapper {
-            max-width: 800px; /* Centered 800px single column page limit */
-            width: 100%;
-            padding: 0 var(--rounded-xl);
-            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
         }
 
-        /* --- HEADER NAVIGATION --- */
+        .wrapper-wide {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* keeps tilted/offset cards from widening the page on phones (which makes mobile browsers zoom out) */
+        main {
+            overflow-x: hidden;
+            overflow-x: clip;
+        }
+
+        .section {
+            position: relative;
+            z-index: 2;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-family: var(--font-hand);
+            font-size: 1.6rem;
+            line-height: 1.2;
+            color: var(--secondary);
+        }
+
+        .section-intro {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-intro h2 {
+            font-family: var(--font-serif);
+            font-weight: 500;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            line-height: 1.15;
+            letter-spacing: -0.015em;
+            margin: 0.35rem 0 0.9rem;
+        }
+
+        .section-intro .lead {
+            color: var(--on-surface-variant);
+            font-size: 1.08rem;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        /* --- AMBIENT LAYERS --- */
+        .page-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background:
+                radial-gradient(circle at 15% 0%, #efe0fb 0%, rgba(239, 224, 251, 0) 45%),
+                radial-gradient(circle at 100% 100%, #f5e3f3 0%, rgba(245, 227, 243, 0) 40%),
+                var(--background);
+        }
+
+        #ambientCanvas {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .cursor-heart {
+            position: fixed;
+            left: 0;
+            top: 0;
+            pointer-events: none;
+            font-size: 14px;
+            color: var(--primary-container);
+            z-index: 3000;
+            transform: translate(-50%, -50%);
+            animation: cursorFloat 900ms ease-out forwards;
+        }
+
+        @keyframes cursorFloat {
+            0% { opacity: 0.85; transform: translate(-50%, -50%) scale(0.6); }
+            100% { opacity: 0; transform: translate(calc(-50% + var(--drift)), -160%) scale(1.15); }
+        }
+
+        .burst-heart {
+            position: fixed;
+            pointer-events: none;
+            z-index: 3000;
+            line-height: 1;
+        }
+
+        /* --- PROGRESS + SIDE NAV --- */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            z-index: 1500;
+        }
+
+        .scroll-progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+        }
+
+        .side-nav {
+            position: fixed;
+            right: 1.4rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 900;
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+        }
+
+        .side-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            border: 1.5px solid var(--outline);
+            background: rgba(255, 255, 255, 0.85);
+            display: block;
+            position: relative;
+            transition: all 0.4s var(--ease-out);
+        }
+
+        .side-dot span {
+            position: absolute;
+            right: 160%;
+            top: 50%;
+            transform: translateY(-50%);
+            white-space: nowrap;
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--on-surface-variant);
+            opacity: 0;
+            transition: opacity 0.25s ease;
+            background: #fff;
+            padding: 0.2rem 0.6rem;
+            border-radius: 999px;
+            box-shadow: var(--shadow-soft);
+            pointer-events: none;
+        }
+
+        .side-dot:hover span { opacity: 1; }
+
+        .side-dot.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: scale(1.3);
+        }
+
+        @media (max-width: 860px) {
+            .side-nav { display: none; }
+        }
+
+        /* --- HEADER --- */
         .header-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-h);
+            z-index: 1200;
+            background: rgba(251, 248, 253, 0.72);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(220, 201, 236, 0.7);
+        }
+
+        .header-inner {
+            height: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 2rem 0;
-            border-bottom: 1px solid var(--surface-container);
-            margin-bottom: 3rem;
         }
 
         .header-nav .brand {
@@ -110,7 +261,7 @@
         .header-nav svg {
             cursor: pointer;
             stroke: var(--on-surface-variant);
-            transition: var(--transition-smooth);
+            transition: all 0.4s var(--ease-out);
         }
 
         .header-nav svg:hover {
@@ -118,597 +269,1118 @@
             transform: scale(1.08);
         }
 
-        /* --- HERO SECTION --- */
-        .hero {
+        /* --- 1. THE DRAWING --- */
+        .drawing-section {
+            padding: calc(var(--header-h) + 2.5rem) 0 4rem;
+        }
+
+        .drawing-stage {
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .hero h1 {
-            font-family: var(--font-serif);
-            font-size: 2.5rem;
-            font-weight: 500;
-            line-height: 1.2;
-            letter-spacing: -0.02em;
-            color: var(--on-surface);
-            max-width: 720px;
-            margin-bottom: 2.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-                line-height: 1.3;
-            }
-        }
-
-        /* Main Image Container mimicking the mock exactly */
-        .hero-img-container {
-            width: 100%;
-            border-radius: var(--rounded-md);
-            overflow: hidden;
-            box-shadow: var(--shadow-glow);
-            border: 1px solid var(--outline-variant);
-            aspect-ratio: 4 / 5;
-            max-height: 680px;
-            position: relative;
-            background-color: var(--surface-container-low);
-        }
-
-        .hero-img-container img, .hero-img-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition-smooth);
-            display: block;
-        }
-
-        .hero-img-container:hover img, .hero-img-container:hover video {
-            transform: scale(1.02);
-        }
-
-        /* --- TAB CONTAINER CONTROLLER --- */
-        .tabs-content {
-            position: relative;
-            min-height: 400px;
-        }
-
-        .tab-panel {
-            display: none;
-            opacity: 0;
-            transform: translateY(15px);
-            transition: var(--transition-smooth);
-        }
-
-        .tab-panel.active {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- CARD STYLING (THE LETTER) --- */
-        .letter-card {
-            background-color: var(--surface-container-low);
-            border: 1px solid var(--outline-variant);
-            border-radius: var(--rounded-md);
-            padding: 3.5rem 2.5rem;
-            margin-bottom: 5rem;
-            box-shadow: var(--shadow-glow);
-            text-align: center;
+            gap: 2rem;
+            padding: 0 1.25rem;
             position: relative;
         }
 
-        @media (max-width: 480px) {
-            .letter-card {
-                padding: 2.5rem 1.5rem;
-            }
-        }
-
-        .letter-card .card-ornament {
-            margin-bottom: 2rem;
-            color: var(--outline);
-        }
-
-        .letter-card p {
-            font-family: var(--font-sans);
-            font-size: 1.1rem;
-            line-height: 1.75;
-            color: var(--on-surface-variant);
-            margin-bottom: 2rem;
-            text-align: justify;
-            text-align-last: center;
-        }
-
-        .letter-card p:last-of-type {
-            margin-bottom: 0;
-        }
-
-        .letter-card .divider-line {
-            width: 1px;
-            height: 40px;
-            background-color: var(--outline-variant);
-            margin: 2.5rem auto;
-        }
-
-        .letter-card .heart-badge {
-            color: var(--primary-container);
-            font-size: 1.2rem;
-            margin-top: 1.5rem;
-            display: inline-block;
-            animation: pulse 2s infinite ease-in-out;
-        }
-
-        /* --- MEMORY CARDS (REDESIGNED LAYOUT) --- */
-        .memory-card {
-            display: flex;
-            background-color: var(--surface-container-low);
-            border: 1px solid var(--outline-variant);
-            border-radius: var(--rounded-md);
-            overflow: hidden;
-            box-shadow: var(--shadow-glow);
-            margin-bottom: 2.5rem;
-            transition: var(--transition-smooth);
-        }
-
-        .memory-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .memory-media {
-            flex: 1;
+        .drawing-frame {
             position: relative;
-            min-height: 300px;
+            width: min(86vw, 460px);
+            aspect-ratio: 597 / 800;
         }
 
-        .memory-media img, .memory-media video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition-smooth);
-        }
-
-        .memory-card:hover .memory-media img,
-        .memory-card:hover .memory-media video {
-            transform: scale(1.03);
-        }
-
-        .memory-content {
-            flex: 1;
-            padding: 2.5rem 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .memory-content h3 {
-            font-family: var(--font-serif);
-            font-size: 1.7rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .memory-content p {
-            color: var(--on-surface-variant);
-            font-size: 1.05rem;
-            line-height: 1.7;
-        }
-
-        /* Alternating layout for even cards */
-        .memory-card:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-        
-        .memory-card:nth-child(even) .memory-content {
-            text-align: right;
-        }
-
-        @media (max-width: 768px) {
-            .memory-card, .memory-card:nth-child(even) {
-                flex-direction: column !important;
-            }
-            .memory-card:nth-child(even) .memory-content {
-                text-align: left;
-            }
-            .memory-media {
-                width: 100%;
-                min-height: 280px;
-            }
-            .memory-content {
-                padding: 1.8rem 1.5rem;
-            }
-        }
-
-        /* --- SCROLL REVEAL ANIMATIONS --- */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .scroll-reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- GALLERY STYLES --- */
-        .gallery-container {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto 5rem auto;
-        }
-        
-        .gallery-item {
-            position: relative;
-            width: 100%;
-            border-radius: var(--rounded-md);
-            overflow: hidden;
-            box-shadow: var(--shadow-glow);
-            border: 1px solid var(--outline-variant);
-            background-color: var(--surface-container-low);
-            aspect-ratio: 4 / 5;
-            max-height: 680px;
-        }
-        
-        .gallery-item img, .gallery-item video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 3rem 2rem 2rem 2rem;
-            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
-            color: white;
-            text-align: center;
-        }
-
-        .gallery-caption h3 {
-            font-family: var(--font-serif);
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: #fff;
-        }
-
-        .gallery-caption p {
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
-
-        /* --- NOTES SECTION (INTERACTIVE TIMELINE) --- */
-        .timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 2.5rem;
-            margin-bottom: 5rem;
-            padding: 0 1rem;
-        }
-
-        .timeline-card {
-            background-color: var(--surface-container-low);
-            border: 1px solid var(--outline-variant);
-            border-radius: var(--rounded-md);
-            padding: 2rem;
-            position: relative;
-            box-shadow: var(--shadow-glow);
-        }
-
-        .timeline-card h3 {
-            font-family: var(--font-serif);
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-card .timeline-date {
-            font-size: 0.8rem;
-            color: var(--outline);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .timeline-card p {
-            color: var(--on-surface-variant);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* --- FOOTER & TABS CONTROL NAVIGATION --- */
-        .footer-tabs-control {
-            border-top: 1px solid var(--surface-container-highest);
-            padding: 3rem 0;
-            text-align: center;
-        }
-
-        .monthsary-accent-banner {
-            font-family: var(--font-serif);
-            font-size: 1.15rem;
-            font-style: italic;
-            color: var(--primary);
-            margin-bottom: 2.5rem;
-        }
-
-        .monthsary-accent-banner span {
-            text-transform: uppercase;
-            font-style: normal;
-            font-size: 0.9rem;
-            letter-spacing: 0.1em;
-            display: block;
-            margin-top: 0.5rem;
-            color: var(--on-surface-variant);
-        }
-
-        /* The dynamic footer tab links */
-        .footer-nav-links {
-            display: flex;
-            justify-content: center;
-            gap: 2.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-nav-links a {
-            font-family: var(--font-sans);
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--outline);
-            text-decoration: none;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            position: relative;
-            padding-bottom: 0.5rem;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-        }
-
-        .footer-nav-links a::after {
+        .drawing-frame::before {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 1.5px;
-            background-color: var(--primary);
-            transition: var(--transition-smooth);
-            transform: translateX(-50%);
+            inset: -4% -12%;
+            background: radial-gradient(closest-side, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0));
+            z-index: -1;
         }
 
-        .footer-nav-links a.active {
-            color: var(--on-surface);
-        }
-
-        .footer-nav-links a.active::after {
+        .line-art {
             width: 100%;
+            height: 100%;
+            display: block;
+            overflow: visible;
+            -webkit-mask-image: linear-gradient(to bottom, #000 86%, transparent 100%);
+            mask-image: linear-gradient(to bottom, #000 86%, transparent 100%);
+        }
+
+        .ink {
+            fill: none;
+            stroke: var(--primary);
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .heart-line {
+            fill: none;
+            stroke: var(--secondary);
+            stroke-width: 2.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .heart-fill {
+            fill: url(#heartGradient);
+            stroke: none;
+        }
+
+        @media (max-width: 600px) {
+            .ink { stroke-width: 3; }
+            .heart-line { stroke-width: 3.4; }
+        }
+
+        .story-panel {
+            width: 100%;
+            max-width: 520px;
+            text-align: center;
+        }
+
+        .story-line {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: clamp(1.3rem, 2.4vw, 2rem);
+            line-height: 1.4;
+            color: var(--on-surface);
+            margin-bottom: 1.1rem;
+        }
+
+        .story-line .hl {
+            font-style: normal;
+            color: var(--primary);
+        }
+
+        .finale {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .finale-kicker {
+            font-family: var(--font-hand);
+            font-size: 1.7rem;
+            line-height: 1.2;
+            color: var(--secondary);
+        }
+
+        .finale-title {
+            font-family: var(--font-serif);
+            font-weight: 500;
+            font-size: clamp(2.3rem, 5.2vw, 4.2rem);
+            line-height: 1.08;
+            letter-spacing: -0.02em;
+            color: var(--primary-deep);
+            margin: 0.3rem 0 0.9rem;
+        }
+
+        .finale-title .word {
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .finale-title .ch { display: inline-block; }
+
+        .finale-sub {
+            font-size: 1.05rem;
+            color: var(--on-surface-variant);
+            max-width: 26rem;
+        }
+
+        .finale-cue {
+            font-family: var(--font-hand);
+            font-size: 1.35rem;
+            color: var(--outline);
+            margin-top: 1.1rem;
+        }
+
+        .draw-meter,
+        .draw-hint { display: none; }
+
+        /* scroll-driven version (enabled by JS once GSAP is ready) */
+        .drawing-section.is-animated { padding: 0; }
+
+        .is-animated .drawing-stage {
+            height: 100vh;
+            height: 100svh;
+            display: grid;
+            grid-template-rows: auto minmax(0, 1fr);
+            justify-items: center;
+            align-content: start;
+            gap: 1rem;
+            padding: calc(var(--header-h) + 1rem) 1.25rem 1rem;
+            overflow: hidden;
+        }
+
+        .is-animated .drawing-frame {
+            width: min(86vw, calc((100svh - var(--header-h) - 16rem) * 0.746));
+        }
+
+        .is-animated .story-panel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .is-animated .draw-meter {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--outline);
+            margin-bottom: 0.9rem;
+        }
+
+        .draw-meter-track {
+            width: 120px;
+            height: 2px;
+            background: var(--outline-variant);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .draw-meter-fill {
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            transform-origin: left center;
+            transform: scaleX(0);
+        }
+
+        .is-animated .story-stack {
+            display: grid;
+            width: 100%;
+        }
+
+        .is-animated .story-line,
+        .is-animated .finale {
+            grid-area: 1 / 1;
+            align-self: start;
+            margin: 0;
+        }
+
+        .is-animated .story-line {
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .is-animated .draw-hint {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: absolute;
+            left: 50%;
+            bottom: 1.1rem;
+            transform: translateX(-50%);
+            font-family: var(--font-hand);
+            font-size: 1.45rem;
+            color: var(--primary);
+            line-height: 1.1;
+            pointer-events: none;
+        }
+
+        .draw-hint svg {
+            stroke: var(--primary);
+            animation: bounceDown 1.8s infinite ease-in-out;
+        }
+
+        @keyframes bounceDown {
+            0%, 100% { transform: translateY(0); opacity: 0.6; }
+            50% { transform: translateY(7px); opacity: 1; }
+        }
+
+        @media (max-height: 700px) and (max-width: 899px) {
+            .finale-kicker { font-size: 1.35rem; }
+            .finale-title { font-size: 1.9rem; margin-bottom: 0.5rem; }
+            .finale-sub { font-size: 0.95rem; }
+            .finale-cue { font-size: 1.15rem; margin-top: 0.5rem; }
+            .story-line { font-size: 1.15rem; }
+        }
+
+        @media (min-width: 900px) {
+            .is-animated .drawing-stage {
+                grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+                grid-template-rows: minmax(0, 1fr);
+                align-items: center;
+                align-content: stretch;
+                column-gap: 5vw;
+                padding: calc(var(--header-h) + 1.5rem) 6vw 2.5rem;
+            }
+
+            .is-animated .drawing-frame {
+                justify-self: end;
+                width: auto;
+                height: min(calc(100vh - var(--header-h) - 4.5rem), 760px);
+                max-width: 100%;
+            }
+
+            .is-animated .story-panel {
+                justify-self: start;
+                align-items: flex-start;
+                text-align: left;
+                max-width: 500px;
+            }
+
+            .is-animated .story-line,
+            .is-animated .finale { align-self: center; }
+
+            .is-animated .finale { align-items: flex-start; }
+        }
+
+        /* --- 2. FOUR MONTHS (COVER + COUNTER) --- */
+        .us-section { padding: 7rem 0 6rem; }
+
+        .us-grid {
+            display: grid;
+            gap: 2.75rem;
+            align-items: center;
+        }
+
+        .us-photo {
+            position: relative;
+            aspect-ratio: 4 / 5;
+            max-height: 640px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--outline-variant);
+            box-shadow: var(--shadow-lift);
+            background: var(--surface-container-low);
+        }
+
+        .us-photo img {
+            position: absolute;
+            left: 0;
+            top: -10%;
+            width: 100%;
+            height: 120%;
+            object-fit: cover;
+        }
+
+        .us-heading {
+            font-family: var(--font-serif);
+            font-weight: 500;
+            font-size: clamp(1.9rem, 3.6vw, 2.8rem);
+            line-height: 1.2;
+            letter-spacing: -0.015em;
+            margin: 0.5rem 0 2rem;
+        }
+
+        .counter {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0.7rem;
+        }
+
+        .count-cell {
+            background: var(--paper);
+            border: 1px solid var(--outline-variant);
+            border-radius: var(--radius);
+            padding: 1rem 0.4rem 0.8rem;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .count-num {
+            display: block;
+            font-family: var(--font-serif);
+            font-size: clamp(1.6rem, 3vw, 2.3rem);
+            line-height: 1;
+            color: var(--primary);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .count-unit {
+            display: block;
+            margin-top: 0.4rem;
+            font-size: 0.68rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--outline);
+        }
+
+        .counter-note {
+            font-family: var(--font-hand);
+            font-size: 1.55rem;
+            line-height: 1.3;
+            color: var(--secondary);
+            margin-top: 1.25rem;
+        }
+
+        @media (min-width: 900px) {
+            .us-grid {
+                grid-template-columns: 0.9fr 1.1fr;
+                gap: 4.5rem;
+            }
+        }
+
+        /* --- 3. THE LETTER --- */
+        .letter-section { padding: 4rem 0 6rem; }
+
+        .letter-paper {
+            position: relative;
+            background: var(--paper);
+            border: 1px solid var(--outline-variant);
+            border-radius: var(--radius);
+            padding: 4rem 3rem 3.25rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .letter-paper::before {
+            content: '';
+            position: absolute;
+            inset: 12px;
+            border: 1px solid var(--surface-container);
+            border-radius: 0.5rem;
+            pointer-events: none;
+        }
+
+        .wax-seal {
+            position: absolute;
+            top: -27px;
+            left: 50%;
+            margin-left: -27px;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 30%, #9a6ad0, var(--primary-deep));
+            display: grid;
+            place-items: center;
+            color: #fff;
+            font-size: 1.2rem;
+            box-shadow: 0 6px 16px rgba(74, 36, 116, 0.35);
+        }
+
+        .letter-greeting {
+            display: block;
+            font-family: var(--font-hand);
+            font-size: 2.3rem;
+            color: var(--primary);
+            margin-bottom: 1.25rem;
+        }
+
+        .letter-body p {
+            font-family: var(--font-serif);
+            font-size: 1.28rem;
+            line-height: 1.75;
+            color: var(--on-surface);
+            margin-bottom: 1.5rem;
+        }
+
+        .letter-divider {
+            width: 60px;
+            height: 1px;
+            background: var(--outline-variant);
+            margin: 2.25rem auto;
+        }
+
+        .letter-sign {
+            font-family: var(--font-hand);
+            font-size: 2rem;
+            line-height: 1.15;
+            color: var(--primary);
+            text-align: right;
+            margin-top: 2rem;
+        }
+
+        .letter-sign small {
+            display: block;
+            font-size: 1.35rem;
+            color: var(--on-surface-variant);
+        }
+
+        @media (max-width: 560px) {
+            .letter-paper { padding: 3.25rem 1.5rem 2.5rem; }
+            .letter-body p { font-size: 1.15rem; }
+        }
+
+        /* --- 4. THANK-YOU CARDS --- */
+        .thanks-section { padding: 5rem 0 6rem; }
+
+        .thanks-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        @media (min-width: 760px) {
+            .thanks-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 1.5rem;
+            }
+        }
+
+        .thanks-card {
+            border: none;
+            background: none;
+            padding: 0;
+            font: inherit;
+            color: inherit;
+            text-align: center;
+            cursor: pointer;
+            min-height: 220px;
+            perspective: 1000px;
+        }
+
+        @media (min-width: 760px) {
+            .thanks-card { min-height: 250px; }
+        }
+
+        .thanks-inner {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: inherit;
+            transform-style: preserve-3d;
+            transition: transform 0.8s var(--ease-out);
+        }
+
+        .thanks-card.is-open .thanks-inner { transform: rotateY(180deg); }
+
+        .thanks-face {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1.25rem 1rem;
+            border-radius: var(--radius);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .thanks-front {
+            background: var(--paper);
+            border: 1px solid var(--outline-variant);
+            box-shadow: var(--shadow-soft);
+            transition: box-shadow 0.4s var(--ease-out);
+        }
+
+        .thanks-card:hover .thanks-front { box-shadow: var(--shadow-lift); }
+
+        .thanks-back {
+            transform: rotateY(180deg);
+            background: linear-gradient(150deg, var(--secondary), var(--primary-deep));
+            color: #fff;
+            box-shadow: var(--shadow-lift);
+        }
+
+        .thanks-num {
+            font-family: var(--font-serif);
+            font-size: 2.6rem;
+            line-height: 1;
+            color: var(--primary-container);
+        }
+
+        .thanks-title {
+            font-family: var(--font-hand);
+            font-size: 1.65rem;
+            line-height: 1.1;
+            color: var(--primary);
+        }
+
+        .thanks-tap {
+            font-size: 0.68rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--outline);
+            margin-top: 0.4rem;
+        }
+
+        .thanks-msg {
+            font-family: var(--font-serif);
+            font-size: 1.08rem;
+            line-height: 1.45;
+        }
+
+        .thanks-heart { font-size: 1.1rem; opacity: 0.85; }
+
+        @media (max-width: 420px) {
+            .thanks-title { font-size: 1.4rem; }
+            .thanks-msg { font-size: 0.96rem; }
+            .thanks-face { padding: 1rem 0.75rem; }
+        }
+
+        .thanks-done {
+            text-align: center;
+            font-family: var(--font-hand);
+            font-size: 1.8rem;
+            line-height: 1.3;
+            color: var(--primary);
+            margin-top: 2.5rem;
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.8s ease, transform 0.8s var(--ease-out);
+        }
+
+        .thanks-done.show {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* --- POLAROIDS (MEMORIES + GALLERY) --- */
+        .polaroid {
+            background: #fff;
+            padding: 14px 14px 0;
+            border-radius: 4px;
+            box-shadow: var(--shadow-lift);
+        }
+
+        .polaroid-photo {
+            position: relative;
+            aspect-ratio: 4 / 5;
+            overflow: hidden;
+            background: var(--surface-container-low);
+        }
+
+        .polaroid-photo img,
+        .polaroid-photo video {
+            position: absolute;
+            left: 0;
+            top: -8%;
+            width: 100%;
+            height: 116%;
+            object-fit: cover;
+        }
+
+        .polaroid figcaption {
+            font-family: var(--font-hand);
+            font-size: 1.6rem;
+            line-height: 1.2;
+            color: var(--on-surface-variant);
+            text-align: center;
+            padding: 0.65rem 0.5rem 0.9rem;
+        }
+
+        /* --- 5. MEMORIES --- */
+        .memories-section { padding: 5rem 0 3rem; }
+
+        .memory {
+            display: grid;
+            gap: 2.25rem;
+            align-items: center;
+            margin-bottom: 5.5rem;
+        }
+
+        .memory .polaroid {
+            max-width: 400px;
+            width: 100%;
+            margin: 0 auto;
+            transform: rotate(-2deg);
+        }
+
+        .memory:nth-of-type(even) .polaroid { transform: rotate(2deg); }
+
+        .memory-index {
+            font-family: var(--font-serif);
+            font-size: 3.4rem;
+            line-height: 1;
+            color: var(--primary-container);
+        }
+
+        .memory-text h3 {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--primary);
+            margin: 0.5rem 0 0.9rem;
+            line-height: 1.2;
+        }
+
+        .memory-text p {
+            font-size: 1.08rem;
+            color: var(--on-surface-variant);
+        }
+
+        @media (min-width: 860px) {
+            .memory {
+                grid-template-columns: 1fr 1fr;
+                gap: 4.5rem;
+            }
+            .memory:nth-of-type(even) .polaroid-wrap { order: 2; }
+        }
+
+        /* --- 6. GALLERY --- */
+        .gallery-section { padding: 4rem 0 4rem; }
+
+        .gallery-track {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+            gap: 2.75rem 1.75rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            transform-origin: 50% 0;
+        }
+
+        .gallery-item .polaroid { transform: rotate(var(--tilt, -2deg)); }
+        .gallery-item:nth-child(4n+2) { --tilt: 2.5deg; }
+        .gallery-item:nth-child(4n+3) { --tilt: -1deg; }
+        .gallery-item:nth-child(4n+4) { --tilt: 1.5deg; }
+
+        .gallery-item figcaption strong {
+            display: block;
+            font-family: var(--font-hand);
+            font-size: 1.55rem;
+            font-weight: 600;
+            line-height: 1.1;
+            color: var(--primary);
+        }
+
+        .gallery-item figcaption span {
+            display: block;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            line-height: 1.4;
+            color: var(--on-surface-variant);
+            margin-top: 0.25rem;
+        }
+
+        .clip { display: none; }
+
+        @media (min-width: 900px) {
+            .gsap-on .gallery-pin-wrap {
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                overflow: hidden;
+            }
+
+            .gsap-on .gallery-track {
+                position: relative;
+                display: flex;
+                align-items: flex-start;
+                width: max-content;
+                max-width: none;
+                gap: 3.5rem;
+                margin: 0;
+                padding: 48px 8vw 0;
+                will-change: transform;
+            }
+
+            .gsap-on .gallery-track::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 24px;
+                height: 1.5px;
+                background: linear-gradient(90deg, rgba(131, 112, 154, 0), var(--outline) 8%, var(--outline) 92%, rgba(131, 112, 154, 0));
+            }
+
+            .gsap-on .gallery-item {
+                width: calc(min(52vh, 440px) * 0.8 + 28px);
+                flex: 0 0 auto;
+            }
+
+            .gsap-on .clip {
+                display: block;
+                position: absolute;
+                top: -30px;
+                left: 50%;
+                width: 14px;
+                height: 32px;
+                margin-left: -7px;
+                border-radius: 3px;
+                background: linear-gradient(var(--primary-container), var(--secondary));
+                box-shadow: 0 2px 6px rgba(74, 36, 116, 0.3);
+                z-index: 2;
+            }
+        }
+
+        .gallery-note { margin-top: 4rem; }
+
+        .note-card {
+            background: var(--paper);
+            border: 1px solid var(--outline-variant);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .note-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .note-card p {
+            color: var(--on-surface-variant);
+            font-size: 1rem;
+        }
+
+        /* --- 7. NOTES TIMELINE --- */
+        .notes-section { padding: 5rem 0 5rem; }
+
+        .timeline {
+            position: relative;
+            max-width: 960px;
+            margin: 0 auto;
+            padding-left: 3rem;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 1.35rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            border-radius: 2px;
+            background: linear-gradient(var(--secondary), var(--primary));
+            transform-origin: top center;
+        }
+
+        .timeline-item {
+            position: relative;
+            background: var(--paper);
+            border: 1px solid var(--outline-variant);
+            border-radius: var(--radius);
+            padding: 1.75rem;
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item:last-of-type { margin-bottom: 0; }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 1.9rem;
+            left: calc(-1.65rem - 5px);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 0 4px var(--background), 0 0 0 5px var(--outline-variant);
+        }
+
+        .timeline-date {
+            display: block;
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--outline);
+            margin-bottom: 0.6rem;
+        }
+
+        .timeline-item h3 {
+            font-family: var(--font-serif);
+            font-size: 1.55rem;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .timeline-item p {
+            color: var(--on-surface-variant);
+            font-size: 0.98rem;
+            line-height: 1.65;
+        }
+
+        @media (min-width: 860px) {
+            .timeline { padding-left: 0; }
+            .timeline-line { left: 50%; margin-left: -1px; }
+            .timeline-item { width: calc(50% - 3rem); }
+            .timeline-item:nth-of-type(odd) { margin-right: auto; }
+            .timeline-item:nth-of-type(even) { margin-left: auto; }
+            .timeline-item:nth-of-type(odd)::before { left: auto; right: calc(-3rem - 6px); }
+            .timeline-item:nth-of-type(even)::before { left: calc(-3rem - 6px); }
+            .timeline-item + .timeline-item { margin-top: -3rem; }
+        }
+
+        /* --- FOOTER --- */
+        .site-footer {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 6rem 0 7rem;
+            border-top: 1px solid var(--outline-variant);
+        }
+
+        .footer-title {
+            font-family: var(--font-serif);
+            font-weight: 500;
+            font-size: clamp(2.1rem, 5vw, 3.3rem);
+            line-height: 1.12;
+            color: var(--primary-deep);
+        }
+
+        .footer-from {
+            display: block;
+            font-family: var(--font-hand);
+            font-size: 1.8rem;
+            color: var(--on-surface-variant);
+            margin-top: 0.4rem;
+        }
+
+        .last-thing-btn {
+            margin-top: 2.5rem;
+            font-family: var(--font-hand);
+            font-size: 1.6rem;
+            color: var(--on-primary);
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            border: none;
+            padding: 0.55rem 2.1rem 0.7rem;
+            border-radius: 999px;
+            cursor: pointer;
+            box-shadow: var(--shadow-lift);
+            transition: transform 0.35s var(--ease-out);
+        }
+
+        .last-thing-btn:hover { transform: translateY(-2px) scale(1.04); }
+
+        .last-thing-msg {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.55rem;
+            line-height: 1.45;
+            color: var(--on-surface);
+            max-width: 520px;
+            margin: 2rem auto 0;
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.9s ease, transform 0.9s var(--ease-out);
+        }
+
+        .last-thing-msg.show {
+            opacity: 1;
+            transform: none;
         }
 
         .footer-signature {
             font-family: var(--font-serif);
             font-size: 1.1rem;
             color: var(--outline);
-            margin-bottom: 0.75rem;
+            margin-top: 3.5rem;
         }
 
         .footer-love-tag {
             font-size: 0.75rem;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--outline-variant);
+            color: var(--outline);
+            margin-top: 0.4rem;
         }
 
-        /* --- KEYFRAME ANIMATIONS --- */
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.9; }
-            50% { transform: scale(1.15); opacity: 1; }
+        .footer-top-link {
+            display: inline-block;
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--outline);
+            text-decoration: none;
+            border: 1px solid var(--outline-variant);
+            padding: 0.6rem 1.4rem;
+            border-radius: 999px;
+            transition: all 0.4s var(--ease-out);
         }
 
-        /* --- UTILITY CLASSES --- */
-        .text-center { text-align: center !important; }
-        body.locked { overflow: hidden; }
+        .footer-top-link:hover {
+            color: var(--on-primary);
+            background: var(--primary);
+            border-color: var(--primary);
+        }
 
         /* --- MUSIC PLAYER --- */
         .music-player {
             position: fixed;
-            bottom: 2rem;
-            right: 2rem;
+            bottom: 1.6rem;
+            right: 1.6rem;
             width: 55px;
             height: 55px;
-            background-color: var(--primary);
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
             color: var(--on-primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: var(--shadow-glow);
+            box-shadow: var(--shadow-lift);
             z-index: 1000;
-            transition: var(--transition-smooth);
+            transition: transform 0.4s var(--ease-out);
         }
-        .music-player:hover {
-            transform: scale(1.1);
-            box-shadow: var(--shadow-hover);
-        }
+
+        .music-player:hover { transform: scale(1.1); }
+
         .music-player svg {
             width: 24px;
             height: 24px;
             fill: currentColor;
         }
-        /* --- MODAL STYLES --- */
+
+        /* --- PLAYLIST MODAL --- */
         .modal-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            inset: 0;
+            background: rgba(34, 12, 51, 0.45);
             backdrop-filter: blur(4px);
             display: none;
             justify-content: center;
             align-items: center;
             z-index: 2000;
-            opacity: 0;
-            transition: var(--transition-smooth);
         }
-        .modal-overlay.active {
-            display: flex;
-            opacity: 1;
-        }
+
+        .modal-overlay.active { display: flex; }
+
         .modal-content {
-            background-color: var(--surface);
+            background-color: var(--paper);
             padding: 2.5rem;
-            border-radius: var(--rounded-lg);
-            box-shadow: var(--shadow-hover);
+            border-radius: 1rem;
+            box-shadow: var(--shadow-lift);
             width: 90%;
             max-width: 400px;
             text-align: center;
-            transform: translateY(20px);
-            transition: var(--transition-smooth);
+            animation: fadeIn 0.4s var(--ease-out);
         }
-        .modal-overlay.active .modal-content {
-            transform: translateY(0);
-        }
+
         .modal-title {
             font-family: var(--font-serif);
             font-size: 1.5rem;
             color: var(--primary);
             margin-bottom: 1rem;
         }
-        .password-input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--outline-variant);
-            border-radius: var(--rounded-sm);
-            margin-bottom: 1rem;
-            font-family: var(--font-sans);
-            font-size: 1rem;
-        }
-        .password-input:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
+
         .btn {
             background-color: var(--primary);
             color: var(--on-primary);
             border: none;
             padding: 0.75rem 1.5rem;
-            border-radius: var(--rounded-full);
+            border-radius: 999px;
             font-family: var(--font-sans);
             font-size: 1rem;
             cursor: pointer;
-            transition: var(--transition-smooth);
             width: 100%;
         }
-        .btn:hover {
-            background-color: #7a352e;
-        }
-        .error-msg {
-            color: red;
-            font-size: 0.85rem;
-            margin-top: -0.5rem;
-            margin-bottom: 1rem;
-            display: none;
-        }
+
         .music-list {
             list-style: none;
-            padding: 0;
             margin-bottom: 1.5rem;
             text-align: left;
         }
+
         .music-item {
             padding: 0.75rem;
             border-bottom: 1px solid var(--outline-variant);
             cursor: pointer;
-            transition: var(--transition-smooth);
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            color: var(--on-surface-variant);
+            transition: all 0.3s ease;
         }
-        .music-item:last-child {
-            border-bottom: none;
-        }
+
+        .music-item:last-child { border-bottom: none; }
+
         .music-item:hover {
             background-color: var(--surface-container-low);
             color: var(--primary);
         }
+
         .music-item.active {
             color: var(--primary);
             font-weight: 600;
         }
-        #musicSelectionView {
-            display: none;
-        }
+
         .close-modal {
             margin-top: 1rem;
             background-color: transparent;
             color: var(--outline);
             border: 1px solid var(--outline);
         }
+
         .close-modal:hover {
             background-color: var(--surface-container);
             color: var(--on-surface);
         }
+
         /* --- INTRO LOCK SCREEN --- */
         .intro-screen {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--background);
+            inset: 0;
+            background: radial-gradient(circle at 30% 20%, #f1e4fb 0%, var(--background) 60%);
             z-index: 9999;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            transition: opacity 1s ease, visibility 1s ease;
+            transition: opacity 1s ease, visibility 1s ease, transform 1s ease;
         }
+
         .intro-screen.fade-out {
             opacity: 0;
             visibility: hidden;
+            transform: scale(1.04);
         }
+
         .intro-view {
             display: none;
             flex-direction: column;
             align-items: center;
             width: 100%;
             max-width: 350px;
+            padding: 0 1rem;
             animation: fadeIn 0.5s ease;
             transition: opacity 0.3s ease;
         }
-        .intro-view.active {
-            display: flex;
-        }
+
+        .intro-view.active { display: flex; }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        .intro-kicker {
+            font-family: var(--font-hand);
+            font-size: 1.6rem;
+            color: var(--secondary);
+            margin-bottom: 0.2rem;
+        }
+
         .intro-title {
             font-family: var(--font-serif);
             font-size: 1.8rem;
+            font-weight: 500;
             color: var(--primary);
             margin-bottom: 2rem;
             text-align: center;
         }
-        /* PIN Display */
+
+        #introMessageView {
+            height: 100vh;
+            justify-content: center;
+            max-width: 520px;
+        }
+
+        #animatedText {
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.4;
+            padding: 0 1rem;
+        }
+
         .pin-display {
             display: flex;
             gap: 1rem;
             margin-bottom: 2rem;
         }
+
         .pin-dot {
             width: 15px;
             height: 15px;
@@ -716,23 +1388,27 @@
             border: 2px solid var(--outline);
             transition: all 0.2s ease;
         }
+
         .pin-dot.filled {
             background-color: var(--primary);
             border-color: var(--primary);
         }
+
         .pin-dot.error {
-            border-color: red;
-            background-color: red;
+            border-color: #b3261e;
+            background-color: #b3261e;
             animation: shake 0.4s ease;
         }
+
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
             25% { transform: translateX(-5px); }
             50% { transform: translateX(5px); }
             75% { transform: translateX(-5px); }
         }
+
         .pin-error {
-            color: red;
+            color: #b3261e;
             font-size: 0.85rem;
             margin-top: -1rem;
             margin-bottom: 1rem;
@@ -740,7 +1416,7 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        /* NumPad */
+
         .numpad {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -748,12 +1424,13 @@
             width: 100%;
             max-width: 280px;
         }
+
         .num-btn {
             width: 70px;
             height: 70px;
             border-radius: 50%;
             border: 1px solid var(--outline-variant);
-            background: transparent;
+            background: rgba(255, 255, 255, 0.5);
             font-family: var(--font-sans);
             font-size: 1.5rem;
             color: var(--on-surface);
@@ -764,60 +1441,83 @@
             transition: all 0.15s ease;
             margin: 0 auto;
         }
-        .num-btn:active, .num-btn:hover {
+
+        .num-btn:active,
+        .num-btn:hover {
             background-color: var(--surface-container);
             transform: scale(0.95);
         }
+
         .num-empty {
             visibility: hidden;
             pointer-events: none;
         }
+
         .num-delete {
             color: var(--outline);
             border: none;
+            background: transparent;
         }
+
         .num-delete:hover {
             color: var(--on-surface);
             background: transparent;
             transform: scale(1.1);
         }
-        /* Intro Music List */
+
         .intro-music-list {
             list-style: none;
             width: 100%;
-            padding: 0;
         }
+
         .intro-music-item {
-            padding: 1.25rem;
+            padding: 1.1rem 1.25rem;
             border: 1px solid var(--outline-variant);
-            border-radius: var(--rounded-md);
-            margin-bottom: 1rem;
+            border-radius: var(--radius);
+            margin-bottom: 0.9rem;
             display: flex;
             align-items: center;
             gap: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            background-color: var(--surface-container-low);
-            font-size: 1.1rem;
+            background-color: rgba(255, 255, 255, 0.6);
+            font-size: 1.08rem;
+            color: var(--on-surface);
         }
+
+        .intro-music-item svg {
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
         .intro-music-item:hover {
             border-color: var(--primary);
             background-color: var(--surface-container);
             transform: translateY(-2px);
-            box-shadow: var(--shadow-glow);
+            box-shadow: var(--shadow-soft);
+        }
+
+        /* --- REDUCED MOTION --- */
+        @media (prefers-reduced-motion: reduce) {
+            .draw-hint svg { animation: none; }
+            .thanks-inner { transition: none; }
         }
     </style>
 </head>
 <body class="locked">
 
-    <!-- FULL SCREEN INTRO GATES -->
+    <div class="page-bg"></div>
+    <canvas id="ambientCanvas"></canvas>
+
+    <!-- INTRO GATE: SONG → PASSCODE → MESSAGES -->
     <div id="introScreen" class="intro-screen">
-        
-        <div id="introMessageView" class="intro-view" style="height: 100vh; justify-content: center;">
-            <h2 id="animatedText" class="intro-title" style="opacity: 0; transition: opacity 0.8s ease; font-size: 2.2rem; font-weight: 400; padding: 0 1.5rem; line-height: 1.4;"></h2>
+
+        <div id="introMessageView" class="intro-view">
+            <h2 id="animatedText" class="intro-title"></h2>
         </div>
 
         <div id="introMusicView" class="intro-view active">
+            <span class="intro-kicker">four months of us</span>
             <h2 class="intro-title">Choose Our Song</h2>
             <ul class="intro-music-list">
                 <li class="intro-music-item" data-src="anyone.mp3">
@@ -866,7 +1566,7 @@
                 <button class="num-btn" data-num="9">9</button>
                 <button class="num-btn num-empty"></button>
                 <button class="num-btn" data-num="0">0</button>
-                <button class="num-btn num-delete" id="pinDelete">
+                <button class="num-btn num-delete" id="pinDelete" aria-label="Delete">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M21 4H8l-7 8 7 8h13a2 2 0 002-2V6a2 2 0 00-2-2z"></path>
                         <line x1="18" y1="9" x2="12" y2="15"></line>
@@ -878,391 +1578,660 @@
     </div>
 
     <!-- FLOATING MUSIC PLAYER -->
-    <div class="music-player" id="musicToggle">
-        <svg id="playIcon" viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z"/>
-        </svg>
-        <svg id="pauseIcon" viewBox="0 0 24 24" style="display: none;">
-            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-        </svg>
+    <div class="music-player" id="musicToggle" role="button" aria-label="Play or pause music">
+        <svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <svg id="pauseIcon" viewBox="0 0 24 24" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
     </div>
     <audio id="bgMusic" loop>
         <source src="anyone.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="wrapper">
-        
-        <!-- HEADER -->
-        <header class="header-nav">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+    <div class="scroll-progress"><div class="scroll-progress-bar" id="progressBar"></div></div>
+
+    <nav class="side-nav" aria-label="Sections">
+        <a href="#drawing" class="side-dot active" data-section="drawing"><span>Us, drawn</span></a>
+        <a href="#us" class="side-dot" data-section="us"><span>Four months</span></a>
+        <a href="#letter" class="side-dot" data-section="letter"><span>The letter</span></a>
+        <a href="#thanks" class="side-dot" data-section="thanks"><span>Thank you</span></a>
+        <a href="#memories" class="side-dot" data-section="memories"><span>Memories</span></a>
+        <a href="#gallery" class="side-dot" data-section="gallery"><span>Gallery</span></a>
+        <a href="#notes" class="side-dot" data-section="notes"><span>Notes</span></a>
+    </nav>
+
+    <header class="header-nav">
+        <div class="wrapper-wide header-inner">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.5" aria-hidden="true">
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
             </svg>
-            
-            <a href="#" class="brand">for Jovelyn</a>
-            
-            <svg id="burgerIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+            <a href="#drawing" class="brand">for You po</a>
+            <svg id="burgerIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.5" role="button" aria-label="Open playlist">
                 <line x1="4" y1="12" x2="20" y2="12"></line>
                 <line x1="4" y1="6" x2="20" y2="6"></line>
                 <line x1="4" y1="18" x2="20" y2="18"></line>
             </svg>
-        </header>
+        </div>
+    </header>
 
-        <!-- MAIN DYNAMIC CONTENT CONTAINER -->
-        <main class="tabs-content">
+    <main>
 
-            <!-- TAB 1: OUR STORY (Default Active) -->
-            <section id="story" class="tab-panel active">
-                
-                <!-- HERO INTRO -->
-                <div class="hero scroll-reveal">
-                    <h1>To the girl who has been my constant for 8 years, and my world for the last three months.</h1>
-                    <div class="hero-img-container">
-                        <img src="be-with-her-photos/83e72057-be7f-4429-86c7-5ee868d18125.jpg" alt="Andrew and Jovelyn">
+        <!-- 1. THE DRAWING -->
+        <section id="drawing" class="section drawing-section">
+            <div class="drawing-stage">
+                <div class="drawing-frame">
+                    <svg class="line-art" viewBox="0 -140 597 800" role="img" aria-label="A line drawing of us">
+                        <defs>
+                            <linearGradient id="heartGradient" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0%" stop-color="#e8a3d6" stop-opacity="0.55"/>
+                                <stop offset="100%" stop-color="#9d5fc0" stop-opacity="0.45"/>
+                            </linearGradient>
+                        </defs>
+                        <path class="heart-fill" d="M330 -35C320 -45 285 -65 285 -87C285 -107 302 -117 315 -117C324 -117 330 -110 330 -101C330 -110 336 -117 345 -117C358 -117 375 -107 375 -87C375 -65 340 -45 330 -35Z"/>
+                        <g class="ink">
+                            <path d="M460 27C459.6 25.8 458.7 21.8 457.5 20.1C456.4 18.4 455.6 17.5 453 16.8C450.4 16.1 445 16.5 442 15.7C439 15 438 12.4 435 12.1C432 11.8 426.3 13.7 424 13.9C421.7 14.2 422.2 13.9 421 13.6C419.8 13.4 418.7 13.3 417 12.4C415.3 11.4 413 9 411 7.8C409 6.7 406.5 5.8 405 5.5C403.5 5.1 403.8 5 402 5.7C400.2 6.4 396.8 8.4 394 9.4C391.2 10.4 387.3 10.6 385.1 11.6C382.9 12.7 383.4 15.2 380.9 15.7C378.4 16.3 372.5 15 370 15C367.5 15 367.1 15.4 366 15.8C364.9 16.2 364.4 16.3 363.4 17.4C362.5 18.6 361.2 21.7 360.4 22.7C359.7 23.8 360.7 23.6 358.9 23.7C357.2 23.8 352.3 23.1 350 23.4C347.7 23.7 346.4 24.5 345 25.4C343.6 26.4 342.9 27.2 341.8 29C340.8 30.8 339.2 34.3 338.7 36C338.1 37.7 338.1 37.5 338.5 39C339 40.5 341.7 42.8 341.5 45C341.3 47.2 337.9 50 337.2 52C336.5 54 336.7 55.5 337.1 57C337.4 58.5 338.1 59.7 339.2 60.9C340.3 62.1 342.6 62.8 343.9 64.2C345.3 65.7 346.4 68.4 347.4 69.5C348.5 70.7 349.6 70.8 350 71"/>
+                            <path d="M350 81C350.5 81 351.1 82.5 353 81.3C354.8 80.1 358.3 75.7 361 73.9C363.7 72.1 367.2 71.1 369 70.4C370.8 69.8 363.7 68.3 372 70C380.3 71.8 411.2 79.2 419 81"/>
+                            <path d="M421 85C421 86 421 89.5 421.2 91C421.5 92.5 422.2 93.1 422.7 93.7C423.2 94.4 423.2 94.8 424.2 94.7C425.2 94.5 427.2 94.2 428.8 92.8C430.5 91.4 433.1 87.1 434 86"/>
+                            <path d="M432 88C430.5 87.4 425 85.4 423.2 84.4C421.4 83.4 421.8 83.4 421.1 82C420.4 80.6 419.8 77.5 419.1 76C418.4 74.5 418.6 74.5 416.9 73.2C415.3 71.9 411.7 70.4 409.2 68.3C406.7 66.2 404.3 62.1 401.9 60.6C399.6 59.2 396.5 60.1 395 59.7C393.5 59.4 393.7 59.4 393.1 58.7C392.4 58.1 391.6 57.4 390.9 56C390.1 54.6 389.5 51.6 388.5 50.6C387.6 49.6 386.6 49.9 385 49.8C383.4 49.7 381.2 49.7 379 50.2C376.8 50.7 374.5 52.6 372 52.8C369.5 53 365.8 51.4 364 51.5C362.2 51.5 362.1 52 361.1 52.9C360 53.8 358.8 55 357.6 57C356.4 59 355.2 61.2 353.8 65C352.4 68.8 350.6 76.8 349.2 79.8C347.9 82.7 346.1 81.7 345.5 82.5C344.9 83.2 344 81.8 345.5 84.1C347 86.3 352.7 93.4 354.6 96.2C356.5 99 356 99.7 356.9 100.9C357.8 102.1 359 102.9 360 103.3C361.1 103.7 362 104 363.1 103.6C364.2 103.1 365.9 101.6 366.8 100.7C367.7 99.8 368.1 99.4 368.5 98.1C369 96.8 369.1 94.4 369.5 93C369.9 91.7 370.7 90.5 371 90"/>
+                            <path d="M371 79C371.4 78.6 372.6 77 373.4 76.5C374.2 75.9 368.7 74.4 376 75.6C383.3 76.8 408.8 82.6 417 83.8C425.2 85.1 421.8 82.7 425 83.2C428.2 83.6 432.8 86.4 436 86.7C439.2 87 442 85.3 444 85.1C446 84.9 446.6 84.9 448 85.5C449.4 86 451.5 87.3 452.6 88.4C453.7 89.5 454.4 89.7 454.8 92C455.1 94.3 455.3 99.5 454.8 102C454.3 104.5 452.5 106.2 452 107"/>
+                            <path d="M450 113C448.8 114.3 445 119 443 121C441 123 439.8 124.2 438 125.1C436.2 126.1 433.3 126.7 432 126.9C430.7 127.1 430.9 126.8 430.2 126.4C429.5 125.9 428.4 124.4 428 124"/>
+                            <path d="M428 121C427.7 121.3 427.5 119.9 426.4 123.1C425.4 126.3 423.3 136.4 421.9 140C420.5 143.6 419.7 143.4 418 144.8C416.3 146.3 419 145.4 412 148.7C405 152 382.7 161.8 376 164.6C369.3 167.5 373.7 165.6 372 165.8C370.3 166 368.2 166.3 366 166C363.8 165.7 360.8 165.1 359 164.1C357.2 163.1 356.1 162 355.1 160C354.1 158 353.3 153.3 353 152"/>
+                            <path d="M358 140C357.8 139.3 357.2 140 357 136C356.8 132 357.1 119.8 356.9 116C356.8 112.2 356.2 113.5 356 113"/>
+                            <path d="M353 116C352.9 116.7 352.9 118 352.2 120C351.4 122 349.9 125.3 348.5 128C347 130.7 346.3 132.4 343.4 135.9C340.5 139.4 334.9 145.4 331 148.9C327.1 152.5 323.4 155 320 157.2C316.6 159.4 314.4 159.7 310.4 162C306.4 164.3 300.2 168.9 296 171.1C291.8 173.4 289 174.2 285 175.3C281 176.5 277.5 177.5 272 177.9C266.5 178.4 256.3 177.8 252 178.1C247.7 178.4 248.2 178.8 246 179.8C243.8 180.8 242.2 181.2 239 184C235.8 186.9 230 194.1 227 197C224 199.9 223.5 200.2 221 201.6C218.5 203 215.3 204.5 212 205.6C208.7 206.6 203.5 207.7 201 208C198.5 208.3 199.3 207.3 197 207.4C194.7 207.5 189 208.6 186.9 208.7C184.9 208.8 185.5 208.6 184.7 208.1C183.9 207.7 182.5 207.1 182.1 205.9C181.7 204.7 180.8 205.6 182.2 201C183.6 196.4 187.3 185.5 190.4 178C193.5 170.5 197.5 163.8 200.6 156C203.7 148.2 206.8 136 208.9 131C210.9 126 211.5 127.5 213 126.2C214.5 124.9 217.2 123.5 218 123"/>
+                            <path d="M236 102C235.5 101.2 233.6 98 232.8 97.1C232 96.3 231.7 96.9 231.2 97.1C230.7 97.3 230.9 95.9 229.8 98.2C228.7 100.5 225.4 108.4 224.5 111C223.7 113.6 224.4 113.2 224.7 113.9C225 114.7 224.2 117.2 226.1 115.4C228 113.5 230.7 106.7 236.1 102.6C241.4 98.4 253.7 92.5 258 90.4C262.3 88.3 260.8 89.6 261.8 90.1C262.8 90.5 263.5 92 263.7 93C264 94 263.7 94.9 263.2 96C262.7 97.1 264.4 96.6 260.8 99.8C257.2 103 246.2 110.8 241.7 115.2C237.2 119.5 235.3 123.9 234 125.9C232.6 128 233.5 127.1 233.8 127.4C234.2 127.7 233.9 128.7 236 127.7C238.1 126.8 242.3 125.7 246.6 121.6C251 117.4 257.5 107.9 262.1 103C266.6 98.1 270.5 95.1 274 92.2C277.5 89.3 280 87.4 283 85.4C286 83.4 289.5 81.5 292 80.3C294.5 79 295.2 78.8 298 78.1C300.8 77.4 305 76.4 309 76C313 75.7 317.5 75.5 322 76.1C326.5 76.6 333.4 78.9 335.9 79.3C338.5 79.7 337.3 79 337.3 78.4C337.3 77.8 337 76.9 335.8 75.7C334.6 74.5 332.5 72.7 330 71C327.5 69.4 324 67.3 321 65.8C318 64.3 315.5 63.1 312 62C308.5 60.9 304.7 59.5 300 59.1C295.3 58.6 288.3 58.8 284 59.4C279.7 59.9 277.3 60.9 274 62.3C270.7 63.6 267 65.6 264 67.4C261 69.2 259.2 70.4 256 73.2C252.8 76 248 79.9 244.7 84.2C241.3 88.5 237.4 96.5 236 99"/>
+                            <path d="M248 121C249.2 121 249.8 121.6 255 120.8C260.2 120.1 274.5 117.2 279 116.6C283.5 116 281.1 117 281.9 117.4C282.8 117.8 283.7 118.4 284.1 119.2C284.5 120 284.7 121 284.5 122C284.3 123 283.2 124.5 283 125"/>
+                            <path d="M299 152C298.8 150.8 297.8 147.7 298.1 145C298.3 142.3 299.2 138.8 300.4 136C301.6 133.2 303.8 129.8 305.2 128.1C306.6 126.3 308.1 126 309 125.7C309.9 125.4 310.2 125.8 310.8 126.3C311.4 126.9 312.2 127.2 312.5 129C312.9 130.8 313.5 134.4 313 137C312.5 139.6 311.1 142.6 309.6 144.8C308.1 147.1 306.6 148.8 304 150.5C301.4 152.3 297.2 154.1 294 155.3C290.8 156.5 288.8 157.2 285 157.6C281.2 158.1 274.8 157.7 271 158.1C267.2 158.5 263.5 159.7 262 160"/>
+                            <path d="M244 161C244.3 160.6 244.7 159.6 246.1 158.8C247.4 158 245.8 157.9 252 156.4C258.2 154.9 277.2 151.5 283 149.9C288.8 148.4 285.8 148.1 286.5 147C287.3 145.9 287.6 144.2 287.3 143.2C287 142.2 285.9 141.7 285 141.3C284.1 140.8 287.2 140.3 282 140.4C276.8 140.5 260.7 141.3 254 142.1C247.3 142.8 244.5 144.6 242 144.9C239.5 145.2 239.5 144.2 239 144"/>
+                            <path d="M239 144C239.5 143.4 240 142.1 242 140.7C244 139.2 242.8 138.2 251 135.4C259.2 132.5 283.3 126.1 291 123.5C298.7 120.9 293.7 122.3 297 119.6C300.3 116.9 306.8 110.6 311 107.2C315.2 103.8 318.7 101 322 99C325.3 97 328.2 96 331 95C333.8 94 336.5 93.2 339 93.1C341.5 93 344.4 93.9 346 94.4C347.6 94.9 348.1 95.6 348.7 96.2C349.4 96.8 349.7 96.7 349.7 98C349.7 99.3 349.4 101.5 348.6 104C347.7 106.5 346.4 109.7 344.6 113C342.8 116.3 340.4 120.6 337.6 124C334.8 127.4 330.9 131.3 328 133.6C325.1 135.9 321.8 137.1 320 137.8C318.2 138.5 318 138.1 317 137.8C316 137.5 314.5 136.3 314 136"/>
+                            <path d="M297 154C297.3 154.8 298.3 157.2 298.6 159C299 160.8 298.7 162.7 299.1 165C299.5 167.3 300.7 171.2 301 173C301.3 174.8 301.1 175.2 300.7 175.9C300.4 176.7 299.6 177.5 299 177.5C298.4 177.5 297.6 176.8 297.3 175.9C296.9 175 297 172.7 297 172"/>
+                            <path d="M312 162C312.1 161.6 309.9 162.4 312.4 159.6C314.9 156.7 320.3 152.4 326.9 145C333.5 137.6 347.8 120 352 115"/>
+                            <path d="M359 128C359.4 128.5 361 130 361.4 131C361.8 132 363.4 129.7 361.5 134C359.7 138.3 352.1 152.3 350.2 157C348.3 161.7 349.8 159.2 350.1 162C350.4 164.8 351.7 171.2 352 174C352.3 176.8 352 177.3 351.8 178.6C351.6 179.9 352.5 180.2 350.5 181.9C348.5 183.7 342.6 185.8 339.8 189.2C337 192.5 335.6 198.9 333.9 202C332.3 205.1 330.9 206 329.8 208C328.7 210 327.9 212.5 327.1 213.8C326.3 215.1 326.3 215.2 324.9 216C323.6 216.8 321.3 218.3 319 218.8C316.7 219.3 313.3 219.2 311 218.8C308.7 218.4 307.2 217.6 305 216.5C302.8 215.3 299.5 212.7 298 211.9C296.5 211.1 296.7 211.4 296.1 211.7C295.5 211.9 294.3 212 294.3 213.3C294.2 214.7 295.5 218.4 295.6 219.9C295.7 221.3 295.1 221.6 295 222"/>
+                            <path d="M298 229C297.7 230 296.2 232.3 296.1 235C295.9 237.7 295.1 237 297.2 245C299.3 253 306.5 273.7 308.6 283C310.8 292.3 310.2 295.8 310 301C309.8 306.2 309.1 309.7 307.4 314C305.6 318.3 301.6 324.1 299.6 326.9C297.5 329.8 295.8 330.3 295 331"/>
+                            <path d="M294 332C294 331.5 293.3 331.7 293.9 329C294.5 326.3 296.8 319.7 297.6 316C298.5 312.3 298.8 310.8 299 307C299.2 303.2 299.4 296.4 298.9 292.9C298.3 289.4 296.2 288.7 295.6 286C294.9 283.4 295.1 278.5 295 277"/>
+                            <path d="M296 278C296.2 279.5 297.4 284.5 297.4 286.8C297.5 289.1 296.3 289.1 296.1 292C295.8 294.9 296.3 300.2 295.8 304C295.3 307.8 293.9 312.5 292.9 315C292 317.5 290.5 318.3 290 319"/>
+                            <path d="M290 319C289.9 315.5 290.1 302.8 289.6 298C289.2 293.2 289.4 295.3 287.3 290C285.3 284.7 279.6 272.8 277.4 266C275.2 259.2 274.4 253.3 274.1 249C273.7 244.7 274.7 242.5 275.2 240C275.7 237.5 276.3 235.8 277 234C277.7 232.2 278.4 230.7 279.4 229C280.4 227.3 281.1 226.1 283.1 224C285 221.9 289.1 217.6 290.9 216.4C292.7 215.1 293.3 216.3 293.9 216.4C294.5 216.6 294.7 216.8 294.7 217.4C294.7 218 293.3 218.2 293.8 220C294.2 221.7 294.9 225.3 297.3 227.8C299.6 230.3 305.1 232.8 308 235.2C310.9 237.6 312.8 239.2 314.6 242C316.4 244.8 317.6 248.5 318.6 252C319.7 255.5 320.3 259.2 320.8 263C321.4 266.8 321.8 271.8 322 275C322.2 278.2 322.1 280.3 321.9 282C321.8 283.6 321.2 284.5 321 285"/>
+                            <path d="M324 296C323.8 296.4 323.1 296.8 322.9 298.1C322.8 299.5 322.8 300.2 323 304C323.2 307.8 323.7 317.6 324.1 321C324.4 324.3 324.8 323.5 325 324"/>
+                            <path d="M323 330C323.2 330.5 323.7 330.7 323.9 333C324.1 335.4 323.8 340.5 324.2 344C324.5 347.5 325.8 351 326 354C326.1 357 325.2 358.5 325 362C324.9 365.5 324.6 370.2 325.1 375C325.5 379.8 327.7 386.7 327.9 391C328.2 395.3 326.2 398.2 326.4 401C326.5 403.8 328.4 405 328.8 408C329.2 411 328.7 415 329.1 419C329.4 423 330.6 428.2 330.9 432C331.3 435.8 331.2 438.2 330.9 442C330.6 445.8 329.1 451.8 329.1 455C329.1 458.2 330.5 459.3 330.8 461C331.1 462.7 331.7 462.2 330.9 465C330.2 467.8 327.1 475.1 326.5 478C325.8 480.9 327.4 481.1 327.1 482.6C326.8 484.1 324.8 484.4 324.6 487C324.4 489.6 325.8 495.5 325.9 498C326.1 500.5 326 500.3 325.6 502C325.1 503.7 324 506.3 323.1 507.9C322.3 509.6 321.3 508.2 320.2 512.1C319.2 515.9 318.6 525.5 316.6 531C314.5 536.5 309.4 542.7 308 545"/>
+                            <path d="M317 531C317.7 531.5 318.8 533 321 533.8C323.2 534.6 320.8 534.5 330 535.8C339.2 537.2 365.5 540.9 376 541.9C386.5 543 388.8 541.8 393 542C397.2 542.2 397.2 542.8 401 543C404.8 543.2 411.8 543.2 416 543C420.2 542.8 418.5 543.1 426 541.8C433.5 540.5 451.3 536.2 461 535.1C470.7 533.9 479.2 535.3 484 534.9C488.8 534.6 488.5 533.6 489.5 533.1C490.5 532.6 489.9 532.2 490 532"/>
+                            <path d="M486 545L483 549"/>
+                            <path d="M502 562C501.8 562.8 501.2 565.5 501 567C500.9 568.5 501.1 569.7 501.4 571C501.6 572.3 501.6 573.2 502.6 575.1C503.6 576.9 506.5 580.2 507.4 582C508.2 583.8 508 584.3 507.6 586C507.2 587.7 507.9 587.2 505.2 592C502.5 596.8 495.3 607 491.3 615C487.2 623 482.7 635.8 481 640"/>
+                            <path d="M480 641L480 643"/>
+                            <path d="M474 647C473.8 647.5 472.8 648.7 472.8 650C472.8 651.3 473.8 654.2 474 655"/>
+                            <path d="M463 649C463.5 649 464 649.5 466 648.9C468 648.4 472 647.2 475 645.8C478 644.3 480.7 642 483.9 640.3C487 638.6 491.3 636.7 494 635.7C496.7 634.7 495.7 634.8 500 634.2C504.3 633.6 516.3 632.5 519.9 631.9C523.6 631.4 521.7 631.2 522 631"/>
+                            <path d="M522 631C521.7 630.7 520.8 629.6 519.9 629.2C519.1 628.9 521.2 629 517 629C512.8 629 499.7 628.7 495 629.1C490.3 629.4 490.5 630.8 489 631.1C487.5 631.4 486.5 631 486 631"/>
+                            <path d="M457 621C457.5 620.3 459 618.5 459.7 617C460.5 615.5 461.3 613.3 461.4 612.1C461.5 611 460.3 610.5 460.2 610.1C460.1 609.7 461 609.2 460.7 609.7C460.3 610.2 459.4 609.1 458 613C456.6 616.9 453.7 628.7 452.2 633C450.7 637.3 450 637.4 448.8 639C447.6 640.6 447.1 641.3 445 642.4C442.9 643.5 438.3 644.9 436 645.6C433.7 646.2 434.2 646.3 431 646.4C427.8 646.5 420.2 645.7 417 646.2C413.8 646.7 412.6 648.5 411.7 649.4C410.9 650.3 411.5 651.1 411.9 651.8C412.3 652.5 412.2 652.8 414.1 653.7C415.9 654.6 420.7 656.6 423 657.3C425.3 658 427.2 657.9 428 658"/>
+                            <path d="M425 645C424.5 643.7 423.2 642.2 422.2 637C421.2 631.8 419.8 621.5 419.1 614C418.4 606.5 418 596.7 418 592C418 587.3 418.6 587.6 419.3 586C419.9 584.4 420.6 583.4 422.1 582.2C423.5 581 424.5 580 428 578.8C431.5 577.6 437.4 576.8 442.9 575C448.4 573.2 458 569.2 461 568"/>
+                            <path d="M441 576C438.9 577.3 430.7 582 428.2 583.7C425.7 585.4 426.9 584.8 426.3 586.1C425.6 587.3 424.5 588.8 424.2 591C423.9 593.2 423.1 590 424.2 599C425.3 608 429.9 637.3 431 645"/>
+                            <path d="M439 644C438.4 643.2 436.1 641.2 435.5 639C434.9 636.8 434.2 636.2 435.4 631C436.6 625.8 441 614.5 442.6 608C444.2 601.5 444.1 596 445 592C445.9 588 447.1 586.2 448.3 584.1C449.5 581.9 450.4 580.7 452.2 579C454 577.3 455.2 576.2 459 573.7C462.8 571.2 471.3 566.6 475 563.9C478.7 561.3 479.6 559.8 480.9 557.6C482.3 555.5 481.8 553.1 483.2 551C484.7 548.8 487.6 545.6 489.9 544.4C492.2 543.3 494 543.7 497 544.2C500 544.7 505.3 546.4 508 547.4C510.7 548.4 511.2 549 513 550.4C514.8 551.8 518 555.1 519 556"/>
+                            <path d="M519 559C518.3 560.5 515.9 564.4 514.7 568C513.4 571.6 512 578.5 511.6 580.7C511.3 583 511.8 581.6 512.3 581.7C512.9 581.9 514.2 581.9 515 581.7C515.7 581.6 516.2 581.4 516.8 580.7C517.4 580.1 518 580 518.7 578C519.4 576 520.9 572.7 521 569C521.1 565.3 518.6 560.7 519.5 556C520.3 551.3 524.7 544 526.3 541C527.8 538 528.5 538.5 529 538"/>
+                            <path d="M529 538C530.5 540 534.3 545.3 538.2 550C542.1 554.7 548.2 560.2 552.6 566C557 571.8 561.5 579.3 564.7 585C568 590.7 569.6 593.8 572.2 600C574.8 606.2 577.6 612.5 580.6 622C583.5 631.5 588.4 651.2 590 657"/>
+                            <path d="M505 579C505 577.5 505.2 572.8 504.8 570C504.4 567.2 504.2 564.6 502.5 562.4C500.9 560.1 498.4 557.9 495 556.4C491.6 555 483.2 556.6 482.3 553.7C481.3 550.8 487.4 545 489.1 539C490.9 533 491.7 526 492.8 518C494 510 495 497.3 495.9 491C496.9 484.7 496.8 485 498.4 480C500 475 503.5 467.3 505.6 461C507.6 454.7 509.9 447.5 510.8 442C511.7 436.5 511.4 434.8 510.9 428C510.5 421.2 508.6 407.8 508.1 401C507.6 394.2 508.3 391.5 507.9 387C507.6 382.5 506.3 376.2 506 374"/>
+                            <path d="M508 365C507.7 364.3 506.4 363.2 506.1 361C505.7 358.8 505.8 354.7 506 352C506.2 349.3 506.7 346.7 507.2 345C507.7 343.3 508.7 342.5 509 342"/>
+                            <path d="M446 249C444.8 249.5 439.8 250.6 438.8 252.3C437.8 253.9 439.8 257.4 440 259C440.1 260.6 439.9 261.1 439.8 261.7C439.6 262.3 440.2 263.5 438.9 262.5C437.6 261.4 433.5 256.7 432 255.5C430.5 254.3 431.2 255 430 255.3C428.8 255.7 426.1 257.3 425.1 257.7C424 258 423.9 257.6 423.7 257.3C423.4 257.1 423 257 423.3 255.9C423.6 254.9 425.1 252.3 425.5 251C425.9 249.7 426.4 249.8 425.7 248C425.1 246.2 421.5 242 421.5 240.3C421.5 238.5 425.3 239.1 425.7 237.7C426.1 236.4 424.3 233 424 232"/>
+                            <path d="M427 231C427.8 231.9 430.3 236.2 432 236.7C433.7 237.1 436.4 234 437.4 233.9C438.4 233.8 437.9 234.4 438 236C438 237.7 436.7 241.9 437.7 243.8C438.7 245.6 442.5 246 443.9 246.9C445.3 247.7 445.7 248.6 446 249"/>
+                            <path d="M439 223C439.1 222.5 438.8 221.8 439.7 220C440.6 218.2 440.5 217.5 444.4 212C448.3 206.5 459.9 191.2 463 187"/>
+                            <path d="M463 181C463.7 181.1 464.2 179.9 467 181.6C469.8 183.3 470.7 186 480 191.2C489.3 196.4 514 208.1 523 212.8C532 217.5 531.8 217.9 533.9 219.4C536.1 221 535.7 221.6 536 222"/>
+                            <path d="M460 143C460.5 142.2 461.6 139.6 463.1 138.2C464.5 136.8 467.2 136 468.5 134.6C469.9 133.1 469.8 130.4 471.3 129.3C472.7 128.3 474.3 129.9 477 128.3C479.7 126.8 485.6 122 487.4 120C489.2 117.9 488.1 117.7 487.8 116C487.5 114.3 485.2 112.5 485.8 110C486.5 107.5 490.7 103.5 491.7 101C492.8 98.5 492.2 97.2 491.9 95C491.7 92.8 490.5 90 490.2 88C489.9 86 489.3 86.7 490.1 83C490.9 79.3 494.4 70 495 66C495.6 62 494.8 61.7 493.6 59C492.4 56.3 488.6 52.5 487.6 50C486.6 47.5 487.7 45.4 487.5 44C487.3 42.6 487.9 42.6 486.4 41.4C484.9 40.2 481.3 39.2 478.4 36.6C475.5 33.9 471.6 27.5 469 25.5C466.4 23.4 464 24.2 463 24"/>
+                            <path d="M406 55L404 58"/>
+                            <path d="M402 60C402.4 59.6 403.6 58.6 404.1 57.6C404.6 56.6 404.9 54.6 405 54"/>
+                            <path d="M369 75C369.3 75.8 370.3 77 370.8 80C371.3 83 371.8 90.3 371.9 93C372 95.7 372 94.7 371.6 96C371.1 97.3 369.4 100.2 369 101"/>
+                            <path d="M366 102L366 104"/>
+                            <path d="M354 95C354.2 94.5 354.9 93.1 354.9 92C354.9 90.9 354.5 89 354.1 88.3C353.7 87.6 353 87.4 352.5 87.7C352 88 351.3 89.6 351 90"/>
+                            <path d="M376 165C376.8 165.6 379.7 167.6 380.8 168.6C381.8 169.7 382.5 168.1 382.2 171.1C381.9 174.2 379.3 182.7 379.1 187C378.9 191.3 380.1 194.2 381 197C381.9 199.8 382.6 201.5 384.4 204C386.3 206.5 388.4 208.8 392 211.8C395.6 214.8 402.5 219.4 406 222.2C409.5 225 411 227.3 413 228.8C415 230.2 415.2 230.7 418 230.8C420.8 231 425.7 231.4 430 229.6C434.3 227.8 439.9 223.6 444 220C448.1 216.4 451.8 211.3 454.3 207.9C456.9 204.6 457.9 202.5 459.2 200C460.5 197.5 461.5 195.7 462.3 193C463.1 190.3 464.4 187.3 463.9 184C463.3 180.7 460.3 176.7 459 173C457.7 169.3 456.7 167.5 456.2 162C455.7 156.5 456.9 145.8 455.8 140C454.7 134.2 450.5 131.2 449.9 127C449.2 122.8 451.8 118.7 451.9 115C451.9 111.3 450.2 108 450.1 105C449.9 102 451 99 451 97C451 95 450.8 94.2 450.1 93C449.5 91.8 448 90.5 447 89.9C446 89.3 445.6 88.7 444 89.3C442.4 90 438.5 92.8 437.3 93.8C436 94.7 436.5 94.4 436.5 95.1C436.5 95.8 436.1 96.4 437.3 97.9C438.5 99.4 442.5 102.2 443.5 104.1C444.6 105.9 444 107.7 443.5 109C443.1 110.3 442 111.2 440.9 111.7C439.8 112.2 438.3 111.5 437 111.8C435.7 112.1 434.1 113.5 433.1 113.7C432.1 113.9 431.3 113.1 431 113"/>
+                            <path d="M437 97L438 88"/>
+                            <path d="M383 173C382.7 173.2 382.3 174.1 380.9 174.1C379.6 174.1 378.5 172.6 375 173.2C371.5 173.8 363.9 176.7 360 177.6C356.1 178.5 353.3 178.1 351.4 178.6C349.5 179 349.2 179.6 348.7 180.4C348.1 181.1 348.1 182.6 348 183"/>
+                            <path d="M298 232C298.4 232.5 298 230.7 300.2 235C302.5 239.3 307.2 246.7 311.6 258C316 269.3 323.9 294.2 326.6 303C329.3 311.8 327.9 308.2 327.9 311C328 313.8 327.6 317 326.8 320C326.1 323 324.6 326.5 323.4 329C322.3 331.5 320.6 334 320 335"/>
+                            <path d="M320 335C319.8 332.5 319.8 325.3 318.8 320C317.8 314.7 314.8 305.8 314 303"/>
+                            <path d="M317 313C316.7 313.4 316 313.3 315.2 315.1C314.5 317 313.7 321.2 312.6 324C311.5 326.8 309.8 330 308.6 332C307.3 334 306.2 334.8 305 335.8C303.8 336.8 301.9 337.7 301.1 338.1C300.2 338.5 300 338.4 299.8 338.2C299.6 338 298.8 339.1 299.8 336.9C300.7 334.7 304.2 328 305.3 325C306.5 322 306.6 320.5 306.7 319C306.9 317.5 306.1 316.5 306 316"/>
+                            <path d="M308 333C308.3 334.5 309.6 339 309.9 342C310.3 345 310.4 346.8 310 351C309.6 355.2 309 361.8 307.6 367C306.2 372.2 304.4 376.9 301.7 382C299.1 387.1 293.6 393.9 291.8 397.6C290.1 401.2 291.2 402.6 291.2 403.9C291.3 405.2 291.3 404.9 292.1 405.4C292.9 405.8 292.5 406.3 296 406.6C299.5 406.9 309.9 406.9 312.9 407.1C316 407.2 314.1 407.3 314.3 407.6C314.6 407.9 314.9 408.4 314.7 408.8C314.4 409.3 313.7 410 312.9 410.3C312.1 410.7 312.8 410.8 310 410.9C307.2 411 298.8 411.1 296 410.9C293.2 410.8 293.5 410.2 293 410"/>
+                            <path d="M292 397C292 397.3 293 396.8 292.1 398.7C291.3 400.5 291.3 395.9 286.7 408C282 420.1 269.1 457 264.3 471C259.6 485 259.1 488.5 258 492"/>
+                            <path d="M240 502C241 503.7 240.5 501.2 245.7 512C251 522.8 263.5 554.8 271.6 566.8C279.6 578.9 287.4 579.8 294 584.3C300.6 588.9 308.2 592.4 311 594"/>
+                            <path d="M308 582C308.8 581.9 311.7 582 312.8 581.4C313.8 580.7 314.6 582.1 314.5 578C314.4 573.9 314.5 563.2 312.1 557C309.7 550.8 302.9 545.5 300 541C297.1 536.5 295.9 532.3 294.7 530.1C293.5 527.8 293.8 528.5 292.8 527.6C291.8 526.8 290.1 525.5 289 524.9C287.9 524.3 287.8 523.9 286 524.1C284.2 524.3 279.3 525.7 278 526"/>
+                            <path d="M275 520C275.6 517.2 278 508.3 278.7 503C279.4 497.7 278.6 491.7 279.2 488C279.8 484.3 282.1 483.2 282.6 481C283 478.8 281.8 477 281.8 475C281.9 473 283.2 472.5 282.8 469C282.4 465.5 279.8 457 279.4 454C279 451 279.7 452.1 280.5 451.3C281.2 450.4 283.2 449.6 283.7 448.7C284.3 447.9 284.3 448 283.9 446C283.6 444 281.8 439.3 281.5 437C281.1 434.7 281.9 433.3 281.7 432C281.4 430.7 280.3 429.5 280 429"/>
+                            <path d="M267 466C267.9 471 271.1 489.7 272.4 496C273.7 502.3 273.9 502 274.7 504C275.4 506 276.6 507.3 277 508"/>
+                            <path d="M280 507C281 506.5 282.5 504.1 286 504.2C289.5 504.4 298.1 507.3 300.9 507.8C303.8 508.2 302.7 507.1 303 507"/>
+                            <path d="M303 507C302.3 506.4 301 504.4 299 503.3C297 502.2 292.8 500.9 291 500.4C289.2 499.9 289.8 499.9 288 500.2C286.2 500.5 281.3 501.7 280 502"/>
+                            <path d="M320 511C318.8 508.5 315.1 499.6 312.8 496C310.5 492.4 308 491.1 306 489.7C304 488.3 299.8 485.4 300.9 487.8C302 490.2 309.9 498.6 312.7 504C315.6 509.4 317.1 517.3 318 520"/>
+                            <path d="M327 481C327 481.5 326.2 481.3 326.7 484C327.3 486.7 329 494 330.1 497C331.1 500 332 500.6 333.2 502C334.3 503.4 329.5 502.8 337 505.5C344.5 508.3 369.3 516.1 378 518.6C386.7 521.2 384.8 520.6 389 520.9C393.2 521.3 394.8 521.9 403 520.9C411.2 520 429.7 516 438 515.1C446.3 514.1 448.2 514.7 453 515.1C457.8 515.4 462.2 516.7 467 517C471.8 517.3 478.9 517.1 482 516.9C485.1 516.8 484.9 516.4 485.8 515.9C486.7 515.4 487.3 514.9 487.5 513.9C487.7 513 488 511.7 486.9 510.2C485.8 508.7 484 506.6 481 504.8C478 503.1 474.7 501.4 469 499.7C463.3 498 451.1 495.7 447 494.6C442.9 493.5 444.9 493.6 444.3 492.8C443.6 492 443.2 490.5 443 490"/>
+                            <path d="M443 490C443.7 489.6 445.7 487.9 447 487.4C448.3 487 445.2 486 451 487.1C456.8 488.2 475.7 492.9 482 494C488.3 495.1 486.8 494.3 489 493.8C491.2 493.3 494 491.5 495 491"/>
+                            <path d="M500 474C498.9 472.7 494.8 467.8 493.4 466C492.1 464.2 492.3 466.3 492 463C491.7 459.7 490.6 451.8 491.6 446C492.5 440.2 496.7 434.7 497.8 428C498.9 421.3 498.1 410.8 498 406C497.9 401.2 497 401.3 497.1 399C497.1 396.7 497.5 395.2 498.4 392C499.3 388.8 501 383.3 502.4 380C503.8 376.7 505.9 374.2 506.7 372C507.6 369.8 506.9 369 507.4 367C508 365 509.4 363.5 509.8 360C510.2 356.5 510.1 350.2 510 346C509.9 341.8 508.8 339.2 509 335C509.2 330.8 509.8 327 511.4 321C513 315 515.6 311 518.6 299C521.6 287 526.6 260.8 529.4 249C532.2 237.2 534.1 231.8 535.4 228.1C536.7 224.3 536.1 226.3 537.2 226.5C538.3 226.7 539.8 227.4 542 229.2C544.2 231 548.1 234.5 550.4 237.2C552.7 239.8 554 241.5 555.7 245C557.4 248.5 559.3 253.2 560.6 258C562 262.8 563.3 266.8 563.8 274C564.4 281.2 565.1 290 563.9 301C562.8 312 558.4 331.2 557.1 340C555.7 348.8 556.2 347.5 556 354C555.8 360.5 557.1 365.7 555.9 379C554.8 392.3 550.2 419 549.1 434C547.9 449 549.2 461.3 549 469C548.8 476.7 548.8 475 547.8 480C546.9 485 546 490.8 543.3 499C540.7 507.2 534.1 523.2 532 529C530 534.8 531.2 533.2 531 534"/>
+                            <path d="M418 606C416.3 603.3 412.8 595.8 407.9 590C403.1 584.2 394.3 576 389 571.1C383.7 566.1 381.3 564.1 376 560.4C370.7 556.7 361.7 551.3 357 548.8C352.3 546.3 351.1 546.3 348 545.4C344.9 544.5 340 543.6 338.3 543.4C336.5 543.2 337.3 543.8 337.3 544.2C337.3 544.7 335 544 338.3 546.2C341.5 548.4 350.9 553.4 357 557.4C363.1 561.5 369.8 566.6 375 570.4C380.2 574.2 384.4 577.1 388 580.2C391.6 583.3 395.1 587 396.8 589C398.5 591 397.8 591 397.9 592C398.1 593 397.9 594.2 397.7 594.9C397.5 595.7 397.4 596 396.7 596.4C396.1 596.7 395.6 597.1 394 596.9C392.4 596.7 391.2 596.8 387 595.2C382.8 593.5 372.7 588.6 369 587C365.3 585.5 366.1 586 365 586C364 585.9 363.1 586.1 362.7 586.4C362.3 586.8 362.5 587.4 362.7 588C362.9 588.5 361.2 587.3 364.1 589.6C366.9 591.9 376.6 598.9 379.8 602C383 605.1 382.3 605.8 383.2 608C384.1 610.2 384.7 613.8 385 615"/>
+                            <path d="M393 621C394.1 622.1 398.2 625.7 399.5 627.4C400.9 629 400.8 628.9 400.9 631C401.1 633.1 401.6 635.5 400.6 640C399.6 644.5 395.9 655 395 658"/>
+                            <path d="M378 628C376.8 630.7 372.8 639.8 370.6 644C368.4 648.2 366.2 651 364.6 653C363 654.9 361.9 655.3 361.1 655.7C360.2 656.1 359.9 655.8 359.7 655.3C359.4 654.9 358.5 655.5 359.5 653C360.5 650.4 363.2 644 365.7 640C368.1 636 371.2 632 374.1 629.1C377 626.1 379.8 624 383 622.5C386.2 620.9 389 620.1 393 619.8C397 619.5 403.3 620.9 407 620.8C410.7 620.7 413 619.7 415 618.9C417 618.1 418.3 616.5 419 616"/>
+                            <path d="M446 658C447.8 657.2 454.5 654.6 457 653.4C459.5 652.2 458.5 653.2 460.9 650.8C463.4 648.4 469.9 641.5 471.8 639C473.7 636.5 472.6 636.3 472.3 635.8C472.1 635.4 471.5 635.4 470 636.5C468.5 637.6 466 639.6 463.4 642.4C460.7 645.1 455.6 651.2 454 653"/>
+                            <path d="M295 658C294.5 653.3 293 638.2 291.8 630C290.7 621.8 289.1 613.7 288 609C286.9 604.3 286.4 603.7 285.4 602.1C284.4 600.4 284.6 600.6 282 599C279.4 597.4 273.8 595 270 592.6C266.2 590.2 262.3 586.8 259 584.8C255.7 582.8 252.7 581.4 250 580.4C247.3 579.5 246.3 579.2 243 579C239.7 578.8 234.7 578.6 230 579.2C225.3 579.8 218.7 581.5 215 582.8C211.3 584.1 210.3 584.7 208.1 587.1C205.8 589.4 203.2 594.8 201.6 597C199.9 599.2 199.6 599.4 198 600.6C196.4 601.7 195.4 602.4 191.9 603.7C188.4 604.9 180.7 606.7 177 608C173.3 609.3 173.9 608.4 170 611.4C166.1 614.5 158.3 620.5 153.4 626.1C148.5 631.7 144.2 640.2 140.6 645C137 649.8 133.4 653.3 132 655"/>
+                            <path d="M207 657C204.9 650.2 197.2 624.4 194.3 616C191.5 607.6 194 613.6 190.1 606.8C186.1 600 175.8 582.8 170.6 575C165.4 567.2 163.9 566 158.8 560C153.7 554 143.1 542.5 140 539"/>
+                            <path d="M192 530C191.1 529 187.9 526 186.4 524C185 522 184 519.8 183.4 518C182.9 516.2 183.2 514.2 183.4 513C183.6 511.8 184.1 511.1 184.5 510.7C184.9 510.3 184.8 508.8 185.6 510.7C186.4 512.6 187.3 518.7 189.5 522C191.7 525.4 196.7 528.6 198.7 531C200.7 533.5 200.6 535.6 201.5 536.7C202.3 537.9 202.9 537.7 204 537.9C205.1 538.1 207.3 538 208 538"/>
+                            <path d="M214 529C213.9 528.6 213.2 527.7 213.2 526.9C213.2 526 213 526.6 213.9 524C214.8 521.4 217.4 514.3 218.8 511C220.2 507.7 221.4 505.8 222.4 504.4C223.5 503 223.4 503.4 225 502.8C226.6 502.2 230.4 501 232 500.9C233.6 500.8 234 501.5 234.8 502.2C235.6 502.9 236.6 504.5 237 505"/>
+                            <path d="M241 524C240.6 524.7 240.2 526.4 238.8 527.9C237.3 529.5 234.1 531.5 232.4 533.4C230.7 535.2 229.4 537.2 228.4 539C227.4 540.8 226.9 541.8 226.4 544C225.9 546.2 226.1 550.9 225.4 552.4C224.7 553.8 223.6 553.1 222 552.9C220.4 552.7 217.8 551.6 216 551.2C214.2 550.8 212.4 551.2 211 550.8C209.6 550.4 208.3 549.6 207.6 548.8C207 548 206.8 548 207.1 546C207.4 544 207.8 540.5 209.4 537C210.9 533.5 214 529.6 216.4 525.1C218.8 520.6 222.2 513.2 223.7 510C225.2 506.8 225 507.2 225.3 506C225.6 504.8 226.3 505.3 225.4 503C224.4 500.7 221.9 494.7 219.7 492.2C217.6 489.7 216.6 491.8 212.6 487.8C208.6 483.7 200.3 474.6 195.7 468C191 461.4 188.1 453.8 184.6 448C181.1 442.2 177 437.3 174.8 433C172.6 428.7 171.8 429 171.2 422C170.6 415 169.9 401.2 171.1 391C172.3 380.8 175.8 370.3 178.4 361C181 351.7 183.7 345.2 186.6 335C189.5 324.8 193.6 310.3 195.8 300C198 289.7 199.2 281.5 199.9 273C200.6 264.5 200 253 200 249"/>
+                            <path d="M201 249C201.2 249.3 201.9 249.7 202.3 251.1C202.8 252.4 203 251.7 203.8 257C204.6 262.3 206.6 275.8 206.9 283C207.3 290.2 206.5 294.7 205.9 300C205.4 305.3 204.9 309.2 203.8 315C202.8 320.8 201.7 326.7 199.6 335C197.5 343.3 193.4 356.3 191.1 365C188.9 373.7 187.5 380 186.2 387C184.8 394 183.6 398.5 183.1 407C182.5 415.5 183.3 432.2 182.9 438C182.6 443.8 181.3 441.3 181 442"/>
+                            <path d="M174 432C173.4 432 171.3 432.6 170.2 432.1C169.1 431.6 167.8 429.8 167.3 429C166.7 428.1 166.6 428.3 166.7 427C166.8 425.7 167.9 422.4 167.9 421.1C167.9 419.7 167.6 419.8 166.8 418.8C165.9 417.8 164.7 416 162.9 415.1C161.1 414.1 159.5 413.1 156 413.2C152.5 413.3 145.8 414.6 142 415.8C138.2 417.1 135 419.3 133 420.7C131 422 130.5 423.4 130 424"/>
+                            <path d="M130 424C130.5 424.1 129.8 425.4 133 424.6C136.2 423.8 144 420.7 149 419.4C154 418.1 160 417.5 163 416.8C166 416 165.9 415.6 166.7 415C167.6 414.3 167.8 414.2 167.9 412.9C168.1 411.6 167.9 408.4 167.7 407.3C167.5 406.1 167.5 406.5 166.7 406.3C166 406 164 406 163.3 405.7C162.7 405.5 161.6 406.5 162.7 404.7C163.8 403 168.8 396.6 170 395"/>
+                            <path d="M171 388C171.2 385.3 170 384.8 172.2 372C174.3 359.2 181.7 323.5 183.8 311C185.9 298.5 184.9 301.3 184.9 297C184.9 292.7 184.6 289.8 183.9 285C183.2 280.2 182.3 273.8 180.6 268C178.9 262.2 176 254.5 173.7 250C171.5 245.5 169.9 243.6 167 241.1C164.1 238.5 158.3 236 156.5 234.5C154.7 233 154.9 233.9 156.3 232C157.7 230.2 162.2 225.7 165 223.2C167.8 220.6 170 218.8 173 216.7C176 214.6 180.5 212.4 182.9 210.6C185.2 208.7 184.7 207.4 187 205.8C189.4 204.2 192.3 202.7 197 201C201.7 199.3 211.3 197.2 215 195.6C218.6 194 218.1 192.1 218.9 191.6C219.8 191.2 218.7 193.6 220.2 192.9C221.7 192.3 225.2 190.1 228 187.8C230.8 185.5 234.7 181.2 237 179.2C239.3 177.2 238.8 176.9 242 175.9C245.2 174.8 251.5 173.5 256 173.1C260.5 172.6 265.5 173.1 269 172.9C272.5 172.7 274.9 172.4 277 171.8C279.1 171.2 280.8 170.5 281.7 169.6C282.7 168.6 283 167.1 282.7 166.2C282.4 165.3 283.9 164.9 280 164.2C276 163.5 264.5 162.3 259 162C253.5 161.7 249.5 162.8 247 162.6C244.5 162.4 244.5 161.3 244 161"/>
+                            <path d="M201 209C201.8 212 204.7 220.5 206.1 227C207.4 233.5 208.5 240.5 208.9 248C209.4 255.5 209.3 266.5 208.9 272C208.6 277.5 207.3 279.5 207 281"/>
+                            <path d="M215 263C215.1 262.3 216.2 262.5 215.8 259C215.4 255.5 213.5 246.2 212.6 242C211.7 237.8 211.3 236.5 210.3 234C209.4 231.5 207.6 228.2 207 227"/>
+                            <path d="M211 260C214.8 263.3 227.7 274.7 234 279.6C240.3 284.5 245 287.2 249 289.6C253 292 255.3 292.9 258 294C260.7 295 262.5 295.7 265 295.9C267.5 296.2 270.5 296.3 273 295.6C275.5 294.8 277.9 293.2 279.9 291.6C281.9 290 284.2 286.9 285 286"/>
+                            <path d="M145 243C144 244.5 140.6 249 138.8 252C137 255 135.7 257.8 134.4 261C133.1 264.2 132.2 267 131.1 271C130.1 275 129.7 274.3 128.2 285C126.6 295.7 123.6 322.5 121.8 335C120 347.5 118.2 351.7 117.2 360C116.2 368.3 116.9 375.8 115.8 385C114.7 394.2 111.1 408.8 110.4 415C109.8 421.2 111.9 419.9 111.7 422.1C111.5 424.2 110 426.5 109.1 427.9C108.2 429.2 106.6 429.5 106.4 430.2C106.1 430.9 107.5 430.8 107.6 432.1C107.8 433.4 106.9 436 107.2 438C107.5 440 108.3 442 109.4 444C110.6 446 111.6 447.7 114.1 449.8C116.5 451.9 120.9 454.1 124 456.4C127.2 458.8 131 462.6 132.7 463.9C134.4 465.2 134 464.3 134.3 464.2C134.5 464.1 134.9 463.8 134.3 463.4C133.6 463 131.4 462.7 130.4 462C129.3 461.4 129.4 460.1 127.9 459.5C126.4 459 122.5 458.7 121.3 458.7C120.1 458.7 120.5 458.6 120.7 459.3C120.9 460 120.8 460.7 122.3 463C123.7 465.3 125.5 468.7 129.2 473C132.9 477.3 140.2 483.7 144.6 489C149 494.3 152.9 501.6 155.4 505C157.9 508.4 154.4 505.4 159.4 509.6C164.3 513.8 179.9 526.5 185 530.2C190.1 533.9 188.1 531.9 189.8 531.7C191.5 531.5 194.1 529.4 195 529"/>
+                            <path d="M199 531C199.9 530 202.9 526.8 204.2 524.8C205.5 522.8 206 522.1 207 519C208 515.9 210 508.5 210.4 506.3C210.7 504.1 209.6 505.7 209.1 506C208.5 506.2 208 506.2 207.1 508.1C206.1 509.9 204.2 514 203.4 517C202.5 520 202.2 524.5 202 526"/>
+                            <path d="M227 550C229.8 552 239.2 558.2 244 562.2C248.8 566.2 252.2 570.5 256 573.8C259.8 577.2 263 579.8 267 582.2C271 584.6 276.7 586.9 280 588C283.3 589.1 284.7 588 286.8 588.9C289 589.9 290.2 591.9 292.9 593.7C295.6 595.5 300.5 598.8 303 599.8C305.5 600.7 306.7 599.8 308 599.1C309.3 598.5 310.2 597.3 310.8 596C311.4 594.6 311.9 593.2 311.5 591C311.1 588.8 314 593.6 308.2 582.6C302.5 571.7 282.8 535.5 276.9 525.4C271.1 515.2 278.3 525.5 273 521.7C267.7 517.8 250.3 505.8 245 502.3C239.7 498.8 242.1 500.8 241 500.6C240 500.5 239.4 500.4 238.6 501.6C237.8 502.8 236.6 506.4 236.2 508C235.8 509.6 235.7 508.7 236.4 511C237.2 513.3 238.4 517.3 240.6 522C242.8 526.7 246.8 533 249.7 539C252.7 545 255.5 552.5 258.3 558C261 563.5 263.9 568.8 266.1 572C268.2 575.2 268.5 575.1 271.2 577.3C273.8 579.5 279.6 583.2 282 585.2C284.3 587.2 284.4 588.7 285.4 589.5C286.4 590.3 287.6 589.9 288 590"/>
+                            <path d="M293 596C293.3 596.8 294.5 599.2 294.8 601C295.1 602.8 294.9 605.6 294.5 607C294.2 608.4 293.7 608.9 292.8 609.4C291.9 609.9 289.6 609.9 289 610"/>
+                            <path d="M110 423C110 423.3 114.2 418.8 110 424.8C105.8 430.8 92 448.5 84.7 459C77.4 469.5 71.5 479.5 66.4 488C61.3 496.5 57.4 503.7 54.2 510C51.1 516.3 49.7 519.8 47.4 526C45.1 532.2 45.1 529.8 40.4 547C35.7 564.2 23.4 613.7 19 629C14.6 644.3 16 636.2 13.8 639C11.6 641.8 6.6 644.6 5.5 645.9C4.4 647.3 5.5 646.7 7.1 647.3C8.6 647.9 12.8 648 14.8 649.5C16.7 650.9 18.3 654.9 19 656"/>
+                        </g>
+                        <path class="heart-line" d="M298 -22C310 -24 322 -29 330 -35C320 -45 285 -65 285 -87C285 -107 302 -117 315 -117C324 -117 330 -110 330 -101C330 -110 336 -117 345 -117C358 -117 375 -107 375 -87C375 -65 340 -45 330 -35C338 -29 350 -24 362 -22"/>
+                    </svg>
+                </div>
+
+                <div class="story-panel">
+                    <div class="draw-meter" aria-hidden="true">
+                        <span class="draw-count">01 / 06</span>
+                        <span class="draw-meter-track"><span class="draw-meter-fill"></span></span>
+                    </div>
+                    <div class="story-stack">
+                        <p class="story-line">For eight years, you were a name on my screen  a message, a hello, a little light in my day.</p>
+                        <p class="story-line">Four months ago, you became the hand I get to hold.</p>
+                        <p class="story-line"><span class="hl">Thank you</span> for choosing me. Not just once  every single day.</p>
+                        <p class="story-line"><span class="hl">Thank you</span> for your patience when I fall short, and your kindness when I need it most.</p>
+                        <p class="story-line"><span class="hl">Thank you</span> for the quiet moments, the loud laughs, and the peace I only feel beside you.</p>
+                        <p class="story-line">So I wanted to draw us  the way my heart sees us.</p>
+                        <div class="finale">
+                            <span class="finale-kicker">four months of us</span>
+                            <h1 class="finale-title">Happy 4th Monthsary, Love</h1>
+                            <p class="finale-sub">Thank you for everything, Lalove. I'm so grateful God gave me you.</p>
+                            <span class="finale-cue">keep scrolling, there's more ↓</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- LETTER WRAPPER CARD -->
-                <article class="letter-card scroll-reveal">
-                    <div class="card-ornament">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-                            <path d="M12 3v18M3 12h18M5 5l14 14M19 5L5 19"/>
-                        </svg>
+                <div class="draw-hint" aria-hidden="true">
+                    <span>scroll slowly</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 4v16M6 14l6 6 6-6"/></svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. FOUR MONTHS -->
+        <section id="us" class="section us-section">
+            <div class="wrapper-wide us-grid">
+                <div class="us-photo">
+                    <img src="be-with-her-photos/83e72057-be7f-4429-86c7-5ee868d18125.jpg" alt="Andrew and Jovelyn">
+                </div>
+                <div class="us-text">
+                    <span class="eyebrow" id="sinceLabel">May 30, 2026</span>
+                        <h2 class="us-heading">To the girl I’ve known for almost 8 years through a screen, and the girl I finally get to call mine today.</h2>
+
+                    <div class="counter">
+                        <div class="count-cell"><span class="count-num" data-unit="days">0</span><span class="count-unit">days</span></div>
+                        <div class="count-cell"><span class="count-num" data-unit="hours">0</span><span class="count-unit">hours</span></div>
+                        <div class="count-cell"><span class="count-num" data-unit="minutes">0</span><span class="count-unit">minutes</span></div>
+                        <div class="count-cell"><span class="count-num" data-unit="seconds">0</span><span class="count-unit">seconds</span></div>
+                    </div>
+                    <p class="counter-note">…and I'm thankful for every single second of it.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. THE LETTER -->
+        <section id="letter" class="section letter-section">
+            <div class="wrapper">
+                <article class="letter-paper">
+                    <span class="wax-seal" aria-hidden="true">♥</span>
+
+                    <span class="letter-greeting">Dear Lalove,</span>
+
+                    <div class="letter-body">
+                        <p>
+                            Happy 4th monthsary, Love. ❤️
+                        </p>
+
+                        <p>
+                            Four months with you, and somehow, it already feels like
+                            we've been through so much together. These past months
+                            haven't always been easy. We've had our fights,
+                            misunderstandings, struggles, and moments when things
+                            felt heavy. We've both made mistakes, and there were
+                            times when loving each other wasn't as easy as we
+                            wanted it to be.
+                        </p>
+
+                        <p>
+                            But despite all of that, you're still here. And I want
+                            you to know how much that means to me.
+                        </p>
+
+                        <p>
+                            Thank you for staying by my side. Thank you for choosing
+                            me, even on the days when I wasn't the easiest person
+                            to love. Thank you for your patience, your understanding,
+                            and for giving us chances when things weren't perfect.
+                            I know I still have a lot to learn and a lot to improve,
+                            but I promise I'm trying  not just for myself, but for us.
+                        </p>
+
+                        <div class="letter-divider"></div>
+
+                        <p>
+                            I don't want a relationship where we never fight or
+                            never struggle. I want a relationship where, no matter
+                            how difficult things get, we continue to choose each
+                            other, communicate, grow, and find our way back to
+                            one another.
+                        </p>
+
+                        <p>
+                            Every day, I thank God for bringing you into my life.
+                            My prayer for us is still the same that He continues
+                            to guide us, helps us understand each other better,
+                            and gives us the strength to overcome whatever
+                            challenges come our way.
+                        </p>
+
+                        <p>
+                            I also pray that we both reach our dreams, build the
+                            careers we want, and grow together without losing
+                            ourselves along the way.
+                        </p>
+
+                        <p>
+                            And Love, I want you to know this from my heart:
+                            I don't see you as someone temporary in my life.
+                            I want you to be my last. I want to keep choosing you,
+                            keep growing with you, and someday, when the time is
+                            right, I want you to be the person I marry and spend
+                            the rest of my life with.
+                        </p>
+
+                        <p>
+                            I can't promise that we'll never fight or that
+                            everything will always be perfect. But I can promise
+                            that I'll keep choosing you, keep working on myself,
+                            and keep fighting for us.
+                        </p>
+
+                        <p>
+                            Thank you for these four months, Love.
+                            Thank you for staying.
+                            Thank you for choosing me.
+                        </p>
+
+                        <p>
+                            Here's to us, to everything we've overcome, and to
+                            all the years I hope we still have ahead of us.
+                        </p>
                     </div>
 
-                    <p>Happy 3rd monthsary, Love. It still feels surreal sometimes that after 8 years of knowing you through screens, I now get to hold your hand in real life. These past three months have been everything I've ever wanted, and I'm so grateful for every laugh, every quiet moment, and just the peace of having you by my side.</p>
-                    
-                    <p>As we celebrate today, my biggest prayer for us is that God continues to guide our relationship. I pray for more understanding, that we always find it in our hearts to forgive each other's shortcomings, and that our love only grows stronger through whatever challenges come our way.</p>
-                    
-                    <div class="divider-line"></div>
-                    
-                    <p>I also pray for our individual paths—that we both find success in our careers, achieve the goals we've set for ourselves, and build a beautiful future together. Thank you for choosing me every day. Here's to us, our journey, and all the blessings yet to come.</p>
-                    
-                    <span class="heart-badge">❤️</span>
+                    <p class="letter-sign">
+                        <small>Always yours,</small>
+                        Andrew ♥
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- 4. THANK-YOU CARDS -->
+        <section id="thanks" class="section thanks-section">
+            <div class="wrapper-wide">
+                <div class="section-intro reveal">
+                    <span class="eyebrow">tap each one</span>
+                    <h2>Six little thank-yous</h2>
+                    <p class="lead">There are a thousand more, but these are the ones I think about the most.</p>
+                </div>
+                <div class="thanks-grid">
+                    <button class="thanks-card" aria-pressed="false">
+                        <span class="thanks-inner">
+                            <span class="thanks-face thanks-front"><span class="thanks-num">01</span><span class="thanks-title">for choosing me</span><span class="thanks-tap">tap to open</span></span>
+                            <span class="thanks-face thanks-back"><span class="thanks-msg">After all those years of messages, you chose me and you keep choosing me every day.</span><span class="thanks-heart">♥</span></span>
+                        </span>
+                    </button>
+                    <button class="thanks-card" aria-pressed="false">
+                        <span class="thanks-inner">
+                            <span class="thanks-face thanks-front"><span class="thanks-num">02</span><span class="thanks-title">for your patience</span><span class="thanks-tap">tap to open</span></span>
+                            <span class="thanks-face thanks-back"><span class="thanks-msg">For waiting when I'm slow, understanding when I'm tired, and forgiving me when I'm wrong.</span><span class="thanks-heart">♥</span></span>
+                        </span>
+                    </button>
+                    <button class="thanks-card" aria-pressed="false">
+                        <span class="thanks-inner">
+                            <span class="thanks-face thanks-front"><span class="thanks-num">03</span><span class="thanks-title">for your smile</span><span class="thanks-tap">tap to open</span></span>
+                            <span class="thanks-face thanks-back"><span class="thanks-msg">It fixes my bad days faster than anything else in this world.</span><span class="thanks-heart">♥</span></span>
+                        </span>
+                    </button>
+                    <button class="thanks-card" aria-pressed="false">
+                        <span class="thanks-inner">
+                            <span class="thanks-face thanks-front"><span class="thanks-num">04</span><span class="thanks-title">for the quiet moments</span><span class="thanks-tap">tap to open</span></span>
+                            <span class="thanks-face thanks-back"><span class="thanks-msg">Sitting beside you, saying nothing, and still feeling like everything is okay.</span><span class="thanks-heart">♥</span></span>
+                        </span>
+                    </button>
+                    <button class="thanks-card" aria-pressed="false">
+                        <span class="thanks-inner">
+                            <span class="thanks-face thanks-front"><span class="thanks-num">05</span><span class="thanks-title">for believing in me</span><span class="thanks-tap">tap to open</span></span>
+                            <span class="thanks-face thanks-back"><span class="thanks-msg">You make me want to grow  in my career, in my faith, and as a man.</span><span class="thanks-heart">♥</span></span>
+                        </span>
+                    </button>
+                    <button class="thanks-card" aria-pressed="false">
+                        <span class="thanks-inner">
+                            <span class="thanks-face thanks-front"><span class="thanks-num">06</span><span class="thanks-title">for being you</span><span class="thanks-tap">tap to open</span></span>
+                            <span class="thanks-face thanks-back"><span class="thanks-msg">Exactly as you are. That's more than enough. That's everything.</span><span class="thanks-heart">♥</span></span>
+                        </span>
+                    </button>
+                </div>
+                <p class="thanks-done" id="thanksDone" hidden>That's all six… for now. I'll never run out of reasons to thank you.</p>
+            </div>
+        </section>
+
+        <!-- 5. MEMORIES -->
+        <section id="memories" class="section memories-section">
+            <div class="wrapper-wide">
+                <div class="section-intro reveal">
+                    <span class="eyebrow">three I keep replaying</span>
+                    <h2>Moments I'm grateful for</h2>
+                </div>
+
+                <article class="memory">
+                    <div class="polaroid-wrap">
+                        <figure class="polaroid">
+                            <div class="polaroid-photo">
+                                <video src="videos/69eacdc8-fb62-43c0-8b57-7f55b8f95f08.mp4" autoplay loop muted playsinline></video>
+                            </div>
+                            <figcaption>our favorite spot</figcaption>
+                        </figure>
+                    </div>
+                    <div class="memory-text">
+                        <span class="memory-index">01</span>
+                        <h3>Our Favorite Spot</h3>
+                        <p>Thank you for every moment here, where time slows down and it's just the two of us. I'll treasure these afternoons forever.</p>
+                    </div>
                 </article>
 
-                <!-- BEAUTIFUL MEMORY CARDS -->
-                <div class="memory-card scroll-reveal">
-                    <div class="memory-media">
-                        <video src="videos/69eacdc8-fb62-43c0-8b57-7f55b8f95f08.mp4" autoplay loop muted playsinline></video>
+                <article class="memory">
+                    <div class="polaroid-wrap">
+                        <figure class="polaroid">
+                            <div class="polaroid-photo">
+                                <img src="be-with-her-photos/47ea876e-b7fb-429f-a1cc-e37d81b1a3d4.jpg" alt="Smiling together">
+                            </div>
+                            <figcaption>that smile</figcaption>
+                        </figure>
                     </div>
-                    <div class="memory-content">
-                        <h3>Our Favorite Spot</h3>
-                        <p>This is where time slows down and it's just the two of us. Every moment spent here with you is a memory I will treasure forever.</p>
-                    </div>
-                </div>
-
-                <div class="memory-card scroll-reveal">
-                    <div class="memory-media">
-                        <img src="be-with-her-photos/47ea876e-b7fb-429f-a1cc-e37d81b1a3d4.jpg" alt="Smiling together">
-                    </div>
-                    <div class="memory-content">
+                    <div class="memory-text">
+                        <span class="memory-index">02</span>
                         <h3>Your Beautiful Smile</h3>
-                        <p>Your smile is my absolute favorite view. It lights up my entire world and makes all my worries completely fade away.</p>
+                        <p>Thank you for smiling at me like that. It's still my favorite view in the whole world, and it makes every worry fade away.</p>
                     </div>
-                </div>
+                </article>
 
-                <div class="memory-card scroll-reveal">
-                    <div class="memory-media">
-                        <img src="be-with-her-photos/4b296b11-7915-4cb5-acc9-effe0f042861.jpg" alt="Holding hands closeup">
+                <article class="memory">
+                    <div class="polaroid-wrap">
+                        <figure class="polaroid">
+                            <div class="polaroid-photo">
+                                <img src="be-with-her-photos/4b296b11-7915-4cb5-acc9-effe0f042861.jpg" alt="Holding hands closeup">
+                            </div>
+                            <figcaption>never letting go</figcaption>
+                        </figure>
                     </div>
-                    <div class="memory-content">
+                    <div class="memory-text">
+                        <span class="memory-index">03</span>
                         <h3>Holding On</h3>
-                        <p>My hand fits perfectly in yours. I promise to never let go, through every high and low that comes our way.</p>
+                        <p>Thank you for holding my hand through every high and low. My hand fits perfectly in yours, and I promise I'll never let go.</p>
                     </div>
-                </div>
+                </article>
+            </div>
+        </section>
 
-            </section>
+        <!-- 6. GALLERY -->
+        <section id="gallery" class="section gallery-section">
+            <div class="wrapper section-intro reveal">
+                <span class="eyebrow">every little chapter</span>
+                <h2>Every little chapter of us, captured.</h2>
+                <p class="lead">Four months of tiny moments I'm grateful for  frozen in time so we never forget how they felt.</p>
+            </div>
 
-            <!-- TAB 2: GALLERY (CAROUSEL) -->
-            <section id="gallery" class="tab-panel">
-                <div class="hero scroll-reveal">
-                    <h1 style="margin-bottom: 1rem;">Every little chapter of us, captured.</h1>
-                    <p style="color: var(--on-surface-variant); font-size: 1.1rem; max-width: 600px; line-height: 1.6; margin-bottom: 3rem;">
-                        These aren't just pictures and videos; they are tiny fragments of time we've frozen forever. Each one holds a feeling, a laugh, and a quiet promise of all the beautiful moments we have yet to create.
-                    </p>
+            <div class="gallery-pin-wrap">
+                <div class="gallery-track">
+                    <figure class="gallery-item">
+                        <span class="clip" aria-hidden="true"></span>
+                        <div class="polaroid">
+                            <div class="polaroid-photo"><video src="videos/8897ded5-65fa-4886-be2f-9a857ab29c2b.mp4" autoplay loop muted playsinline></video></div>
+                            <figcaption><strong>Spontaneous Joy</strong><span>Thank you for all the unplanned laughs.</span></figcaption>
+                        </div>
+                    </figure>
+                    <figure class="gallery-item">
+                        <span class="clip" aria-hidden="true"></span>
+                        <div class="polaroid">
+                            <div class="polaroid-photo"><video src="videos/69eacdc8-fb62-43c0-8b57-7f55b8f95f08.mp4" autoplay loop muted playsinline></video></div>
+                            <figcaption><strong>Our Peaceful Escape</strong><span>Thank you for being my calm.</span></figcaption>
+                        </div>
+                    </figure>
+                    <figure class="gallery-item">
+                        <span class="clip" aria-hidden="true"></span>
+                        <div class="polaroid">
+                            <div class="polaroid-photo"><img src="be-with-her-photos/47ea876e-b7fb-429f-a1cc-e37d81b1a3d4.jpg" alt="Your radiant smile"></div>
+                            <figcaption><strong>Your Radiant Smile</strong><span>Thank you for that smile, every single time.</span></figcaption>
+                        </div>
+                    </figure>
+                    <figure class="gallery-item">
+                        <span class="clip" aria-hidden="true"></span>
+                        <div class="polaroid">
+                            <div class="polaroid-photo"><img src="be-with-her-photos/4b296b11-7915-4cb5-acc9-effe0f042861.jpg" alt="Intertwined hands"></div>
+                            <figcaption><strong>Intertwined Hands</strong><span>Thank you for never letting go.</span></figcaption>
+                        </div>
+                    </figure>
+                    <figure class="gallery-item">
+                        <span class="clip" aria-hidden="true"></span>
+                        <div class="polaroid">
+                            <div class="polaroid-photo"><img src="be-with-her-photos/6b3eed57-1d47-4d9a-9d09-0c3fdc82ff79.jpg" alt="Walking together"></div>
+                            <figcaption><strong>Steps Together</strong><span>Thank you for walking beside me.</span></figcaption>
+                        </div>
+                    </figure>
+                    <figure class="gallery-item">
+                        <span class="clip" aria-hidden="true"></span>
+                        <div class="polaroid">
+                            <div class="polaroid-photo"><img src="be-with-her-photos/6bd49784-53fe-4ffa-b8e2-59b30bdc4de0.jpg" alt="Close selfie"></div>
+                            <figcaption><strong>Closer to You</strong><span>Thank you for all the stolen moments.</span></figcaption>
+                        </div>
+                    </figure>
+                    <figure class="gallery-item">
+                        <span class="clip" aria-hidden="true"></span>
+                        <div class="polaroid">
+                            <div class="polaroid-photo"><img src="be-with-her-photos/c007160a-a211-48e5-bd62-e0509f415076.jpg" alt="Sitting together"></div>
+                            <figcaption><strong>A Sense of Home</strong><span>Thank you for feeling like home.</span></figcaption>
+                        </div>
+                    </figure>
+                    <figure class="gallery-item">
+                        <span class="clip" aria-hidden="true"></span>
+                        <div class="polaroid">
+                            <div class="polaroid-photo"><img src="be-with-her-photos/83e72057-be7f-4429-86c7-5ee868d18125.jpg" alt="Quiet moments"></div>
+                            <figcaption><strong>Quiet Contentment</strong><span>Thank you for the peace I feel with you.</span></figcaption>
+                        </div>
+                    </figure>
                 </div>
-                
-                <div class="gallery-container">
-                    <div class="gallery-item scroll-reveal">
-                        <video src="videos/8897ded5-65fa-4886-be2f-9a857ab29c2b.mp4" autoplay loop muted playsinline></video>
-                        <div class="gallery-caption">
-                            <h3>Spontaneous Joy</h3>
-                            <p>The laughter, the unexpected moments, and the sheer joy of just being with you. I cherish our shared adventures more than words can say.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item scroll-reveal">
-                        <video src="videos/69eacdc8-fb62-43c0-8b57-7f55b8f95f08.mp4" autoplay loop muted playsinline></video>
-                        <div class="gallery-caption">
-                            <h3>Our Peaceful Escape</h3>
-                            <p>The gentle breeze and the calming view are nothing compared to the comfort of your presence. This memory feels like a warm embrace.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item scroll-reveal">
-                        <img src="be-with-her-photos/47ea876e-b7fb-429f-a1cc-e37d81b1a3d4.jpg" alt="Your Radiant Smile">
-                        <div class="gallery-caption">
-                            <h3>Your Radiant Smile</h3>
-                            <p>I could spend an eternity getting lost in that smile. It's the brightest light that instantly makes all my worries fade away.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item scroll-reveal">
-                        <img src="be-with-her-photos/4b296b11-7915-4cb5-acc9-effe0f042861.jpg" alt="Intertwined Hands">
-                        <div class="gallery-caption">
-                            <h3>Intertwined Hands</h3>
-                            <p>Every time our fingers lock, I'm reminded of the silent promise we share. I never want to let this beautiful feeling go.</p>
-                        </div>
-                        
-                    </div>
-                    <div class="gallery-item scroll-reveal">
-                        <img src="be-with-her-photos/6b3eed57-1d47-4d9a-9d09-0c3fdc82ff79.jpg" alt="Walking Together">
-                        <div class="gallery-caption">
-                            <h3>Steps Together</h3>
-                            <p>No matter where the path leads, walking beside you makes every step of the journey profoundly beautiful and meaningful.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item scroll-reveal">
-                        <img src="be-with-her-photos/6bd49784-53fe-4ffa-b8e2-59b30bdc4de0.jpg" alt="Close selfie detail">
-                        <div class="gallery-caption">
-                            <h3>Closer to You</h3>
-                            <p>In these stolen moments, when it's just you and me against the world, I feel an overwhelming sense of love and belonging.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item scroll-reveal">
-                        <img src="be-with-her-photos/c007160a-a211-48e5-bd62-e0509f415076.jpg" alt="Cozy sit together">
-                        <div class="gallery-caption">
-                            <h3>A Sense of Home</h3>
-                            <p>You are my ultimate comfort. Just being near you gives me a deep peace that I have never known before meeting you.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item scroll-reveal">
-                        <img src="be-with-her-photos/83e72057-be7f-4429-86c7-5ee868d18125.jpg" alt="Quiet moments">
-                        <div class="gallery-caption">
-                            <h3>Quiet Contentment</h3>
-                            <p>Even when no words are spoken, the bond we share speaks volumes. These serene moments are eternally etched in my heart.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="gallery-extra timeline-card scroll-reveal" style="margin-bottom: 4rem;">
+            </div>
+
+            <div class="wrapper gallery-note reveal">
+                <div class="note-card">
                     <h3>Behind the Moments</h3>
-                    <p>Every single frame in this collection is a testament to the love we share. Beyond what the lens could capture, there are stories of our spontaneous late-night talks, our comfortable silences, and the endless joy you bring into my life every single day. Here's to writing a thousand more beautiful chapters together.</p>
+                    <p>Every frame here is a thank-you. Beyond what the camera caught, there are the late-night talks, the comfortable silences, and the endless joy you bring into my life every single day. Thank you for four months of chapters like these  here's to a thousand more.</p>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- TAB 3: NOTES -->
-            <section id="notes" class="tab-panel">
-                <div class="hero scroll-reveal">
-                    <h1>Little notes on things I adore about us.</h1>
+        <!-- 7. NOTES -->
+        <section id="notes" class="section notes-section">
+            <div class="wrapper-wide">
+                <div class="section-intro reveal">
+                    <span class="eyebrow">from the start until now</span>
+                    <h2>Little notes on things I adore about us.</h2>
                 </div>
 
                 <div class="timeline">
-                    <div class="timeline-card scroll-reveal">
+                    <div class="timeline-line"></div>
+
+                    <article class="timeline-item">
                         <span class="timeline-date">The Virtual Days</span>
                         <h3>8 Years of Connection</h3>
-                        <p>For almost eight years, we stayed connected through social media while living our own lives. Looking back now, it's amazing to realize that we already had each other all along.</p>
-                    </div>
+                        <p>
+                            For eight years, thank you for staying connected with me and for
+                            never forgetting me, even as we both grew and changed as people.
+                            Thank you for cherishing me through all those years, for keeping
+                            a place for me in your life, and for being there even when we were
+                            only connected through a screen. Looking back now, I realize that
+                            for eight years, you were the one I had been waiting for all along.
+                        </p>
+                    </article>
 
-                    <div class="timeline-card scroll-reveal">
+                    <article class="timeline-item">
                         <span class="timeline-date">The Little Things</span>
                         <h3>Effortless Ease</h3>
-                        <p>Just sitting together, holding hands, and enjoying the quiet moments makes me happy. We don't have to talk all the time because being together already feels enough.</p>
-                    </div>
+                        <p>Just sitting together, holding hands, and enjoying the quiet makes me happy. We don't have to talk all the time  being together is already enough. Thank you for that kind of peace.</p>
+                    </article>
 
-                    <div class="timeline-card scroll-reveal">
+                    <article class="timeline-item">
+                        <span class="timeline-date">Month Four</span>
+                        <h3>A Full Heart</h3>
+                        <p>Four months of real memories, and my heart has never felt this full. Thank you for loving me the way you do  gently, patiently, and completely.</p>
+                    </article>
+
+                    <article class="timeline-item">
                         <span class="timeline-date">The Promise</span>
                         <h3>Our Next Chapter</h3>
-                        <p>We started with messages and video calls, and now we're celebrating our third month of real memories. My daily prayer is for our continued growth, success in our careers, and that we always choose each other. I look forward to spending many more months with you.</p>
-                    </div>
+                        <p>We started with messages and video calls, and now here we are. My daily prayer is for our continued growth, success in our careers, and that we always choose each other. I can't wait for month five, and every month after.</p>
+                    </article>
                 </div>
-            </section>
+            </div>
+        </section>
 
-        </main>
+    </main>
 
-        <!-- FOOTER & TAB NAVIGATION INTEGRATION -->
-        <footer class="footer-tabs-control">
-            <div class="monthsary-accent-banner">
-                Happy 3rd Monthsary, My Love.
-                <span>— Andrew</span>
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="wrapper">
+            <div class="reveal">
+                <h2 class="footer-title">Happy 4th Monthsary, My Love.</h2>
+                <span class="footer-from"> Andrew</span>
             </div>
 
-            <!-- Intersecting Tab Links exactly as shown in the mockup -->
-            <nav class="footer-nav-links">
-                <a class="tab-link active" data-tab="story">Our Story</a>
-                <a class="tab-link" data-tab="gallery">Gallery</a>
-                <a class="tab-link" data-tab="notes">Notes</a>
-            </nav>
+            <button class="last-thing-btn" id="lastThingBtn">one last thing ♥</button>
+            <p class="last-thing-msg" id="lastThingMsg" hidden>Thank you for being my answered prayer. I love you  today, and every month after.</p>
 
             <div class="footer-signature">Jovelyn & Andrew</div>
-            <div class="footer-love-tag">WITH LOVE, ANDREW</div>
-        </footer>
+            <div class="footer-love-tag">With love and gratitude, Andrew</div>
 
-    </div>
+            <a href="#drawing" class="footer-top-link">Back to the top</a>
+        </div>
+    </footer>
 
-    <!-- MODAL FOR MUSIC -->
+    <!-- PLAYLIST MODAL -->
     <div class="modal-overlay" id="musicModal">
         <div class="modal-content">
-            <!-- Music Selection View -->
-            <div id="musicSelectionView" style="display: block;">
-                <h2 class="modal-title">Our Playlist</h2>
-                <ul class="music-list">
-                    <li class="music-item" data-src="anyone.mp3">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
-                        Anyone
-                    </li>
-                    <li class="music-item" data-src="Bruno Mars - Just The Way You Are (Official Music Video).mp3">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
-                        Just The Way You Are
-                    </li>
-                    <li class="music-item" data-src="Taylor Swift - Lover (Official Music Video).mp3">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
-                        Lover
-                    </li>
-                </ul>
-                <button class="btn close-modal" id="closeModal">Close</button>
-            </div>
+            <h2 class="modal-title">Our Playlist</h2>
+            <ul class="music-list">
+                <li class="music-item" data-src="anyone.mp3">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                    Anyone
+                </li>
+                <li class="music-item" data-src="Bruno Mars - Just The Way You Are (Official Music Video).mp3">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                    Just The Way You Are
+                </li>
+                <li class="music-item" data-src="Taylor Swift - Lover (Official Music Video).mp3">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                    Lover
+                </li>
+                <li class="music-item" data-src="The 1975 - Me & You Together Song.mp3">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                    Me & You Together Song
+                </li>
+                <li class="music-item" data-src="Taylor Swift - Labyrinth (Lyric Video).mp3">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                    Labyrinth
+                </li>
+            </ul>
+            <button class="btn close-modal" id="closeModal">Close</button>
         </div>
     </div>
 
-    <!-- VANILLA JS TAB AND SMOOTH TRANSITIONS CONTROLLER -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const tabLinks = document.querySelectorAll('.tab-link');
-            const tabPanels = document.querySelectorAll('.tab-panel');
 
-            tabLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    
-                    const targetTabId = link.getAttribute('data-tab');
+            // The day you became official  powers the live counter. Month is 0-based (4 = May).
+            const TOGETHER_SINCE = new Date(2026, 4, 30);
 
-                    // Remove active state from all nav link indicators
-                    tabLinks.forEach(item => item.classList.remove('active'));
-                    // Add active class to clicked tab link
-                    link.classList.add('active');
+            if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+            window.scrollTo(0, 0);
 
-                    // Handle fade-out transition for all panels, then activate target panel
-                    tabPanels.forEach(panel => {
-                        if (panel.classList.contains('active')) {
-                            panel.style.opacity = '0';
-                            panel.style.transform = 'translateY(15px)';
-                            
-                            setTimeout(() => {
-                                panel.classList.remove('active');
-                                
-                                const targetPanel = document.getElementById(targetTabId);
-                                targetPanel.classList.add('active');
-                                
-                                // Trigger animation sequence
-                                setTimeout(() => {
-                                    targetPanel.style.opacity = '1';
-                                    targetPanel.style.transform = 'translateY(0)';
-                                }, 50);
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const finePointer = window.matchMedia('(pointer: fine)').matches;
+            const hasGsap = !!(window.gsap && window.ScrollTrigger);
+            const animate = hasGsap && !reduceMotion;
+            if (animate) document.documentElement.classList.add('gsap-on');
 
-                            }, 350); // Timeout matched with CSS smooth transitions
-                        }
-                    });
-
-                    // Scroll viewport softly to the main navigation boundary
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                });
-            });
-            // --- MUSIC PLAYER LOGIC ---
+            // --- MUSIC PLAYER ---
             const music = document.getElementById('bgMusic');
-            const musicToggle = document.getElementById('musicToggle');
             const playIcon = document.getElementById('playIcon');
             const pauseIcon = document.getElementById('pauseIcon');
             let isPlaying = false;
 
-            function toggleMusic() {
-                if (isPlaying) {
-                    music.pause();
-                    playIcon.style.display = 'block';
-                    pauseIcon.style.display = 'none';
-                } else {
-                    music.play().then(() => {
-                        playIcon.style.display = 'none';
-                        pauseIcon.style.display = 'block';
-                    }).catch(e => console.log("Autoplay blocked:", e));
-                }
-                isPlaying = !isPlaying;
+            function showPlaying(playing) {
+                playIcon.style.display = playing ? 'none' : 'block';
+                pauseIcon.style.display = playing ? 'block' : 'none';
+                isPlaying = playing;
             }
 
-            musicToggle.addEventListener('click', toggleMusic);
+            function playSong(src) {
+                music.src = src;
+                music.play().then(() => showPlaying(true)).catch(e => console.log('Play failed:', e));
+                document.querySelectorAll('.music-item').forEach(m => {
+                    m.classList.toggle('active', m.getAttribute('data-src') === src);
+                });
+            }
 
-            // Removed the body click autoplay to prevent music from starting while typing the password.
+            document.getElementById('musicToggle').addEventListener('click', () => {
+                if (isPlaying) {
+                    music.pause();
+                    showPlaying(false);
+                } else {
+                    music.play().then(() => showPlaying(true)).catch(e => console.log('Autoplay blocked:', e));
+                }
+            });
 
-            // --- INTRO SEQUENCE & LOGIC ---
+            // --- INTRO: SONG → PASSCODE → MESSAGES ---
             const introScreen = document.getElementById('introScreen');
             const introMessageView = document.getElementById('introMessageView');
             const animatedText = document.getElementById('animatedText');
             const introMusicView = document.getElementById('introMusicView');
             const pinView = document.getElementById('pinView');
             const pinDots = document.querySelectorAll('#pinDots .pin-dot');
-            const numBtns = document.querySelectorAll('.num-btn[data-num]');
-            const pinDelete = document.getElementById('pinDelete');
             const introPinError = document.getElementById('introPinError');
-            const introMusicItems = document.querySelectorAll('.intro-music-item');
-            
-            // 1. Music Selection (First Step)
-            introMusicItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    const src = item.getAttribute('data-src');
-                    music.src = src;
-                    
-                    music.play().then(() => {
-                        playIcon.style.display = 'none';
-                        pauseIcon.style.display = 'block';
-                        isPlaying = true;
-                    }).catch(e => console.log("Play failed:", e));
 
-                    // Hide music view, show PIN view
+            document.querySelectorAll('.intro-music-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    playSong(item.getAttribute('data-src'));
                     introMusicView.style.opacity = '0';
                     setTimeout(() => {
                         introMusicView.classList.remove('active');
                         pinView.classList.add('active');
                     }, 300);
-                    
-                    // Sync active state with burger modal list
-                    document.querySelectorAll('.music-item').forEach(m => {
-                        if(m.getAttribute('data-src') === src) {
-                            m.classList.add('active');
-                        } else {
-                            m.classList.remove('active');
-                        }
-                    });
                 });
             });
 
-            // 2. Password logic
             const PIN_CODE = "053026";
             let enteredPin = "";
 
             function updatePinDisplay() {
                 pinDots.forEach((dot, index) => {
-                    if (index < enteredPin.length) {
-                        dot.classList.add('filled');
-                        dot.classList.remove('error');
-                    } else {
-                        dot.classList.remove('filled');
-                        dot.classList.remove('error');
-                    }
+                    dot.classList.toggle('filled', index < enteredPin.length);
+                    dot.classList.remove('error');
                 });
                 introPinError.style.opacity = '0';
             }
 
             function verifyPin() {
                 if (enteredPin === PIN_CODE) {
-                    // PIN is correct, show animated messages
                     pinView.style.opacity = '0';
                     setTimeout(() => {
                         pinView.classList.remove('active');
                         introMessageView.classList.add('active');
-                        playMessageSequence(); // Start animation
+                        playMessageSequence();
                     }, 300);
                 } else {
-                    // Error state
                     pinDots.forEach(dot => {
                         dot.classList.remove('filled');
                         dot.classList.add('error');
@@ -1275,13 +2244,12 @@
                 }
             }
 
-            // 3. Animated Message Sequence
             const messages = [
                 { text: "Hi love,", duration: 1500 },
-                { text: "I made this for you", duration: 3000 },
-                { text: "I hope you like it", duration: 2000 },
-                { text: "I love you", duration: 2000 },
-                { text: "Happy 3rd Monthsary", duration: 2000 }
+                { text: "It's been four months already…", duration: 2600 },
+                { text: "and I have so much to thank you for", duration: 2800 },
+                { text: "so let me show you", duration: 2200 },
+                { text: "scroll slowly, okay?", duration: 2200 }
             ];
             let msgIndex = 0;
 
@@ -1291,94 +2259,483 @@
                     setTimeout(() => {
                         animatedText.textContent = messages[msgIndex].text;
                         animatedText.style.opacity = '1';
-                        
                         setTimeout(() => {
                             animatedText.style.opacity = '0';
                             msgIndex++;
                             setTimeout(playMessageSequence, 800);
                         }, messages[msgIndex].duration);
-                        
                     }, 800);
                 } else {
-                    // Sequence finished, reveal website!
-                    introScreen.classList.add('fade-out');
-                    document.body.classList.remove('locked');
+                    unlockSite();
                 }
             }
 
-            numBtns.forEach(btn => {
+            function unlockSite() {
+                window.scrollTo(0, 0);
+                introScreen.classList.add('fade-out');
+                document.body.classList.remove('locked');
+                if (hasGsap) setTimeout(() => ScrollTrigger.refresh(), 150);
+            }
+
+            document.querySelectorAll('.num-btn[data-num]').forEach(btn => {
                 btn.addEventListener('click', () => {
                     if (enteredPin.length < 6) {
                         enteredPin += btn.getAttribute('data-num');
                         updatePinDisplay();
-                        
-                        if (enteredPin.length === 6) {
-                            setTimeout(verifyPin, 100);
-                        }
+                        if (enteredPin.length === 6) setTimeout(verifyPin, 100);
                     }
                 });
             });
 
-            pinDelete.addEventListener('click', () => {
+            document.getElementById('pinDelete').addEventListener('click', () => {
                 if (enteredPin.length > 0) {
                     enteredPin = enteredPin.slice(0, -1);
                     updatePinDisplay();
                 }
             });
 
-            // --- BURGER ICON MODAL LOGIC ---
-            const burgerIcon = document.getElementById('burgerIcon');
+            // --- PLAYLIST MODAL ---
             const musicModal = document.getElementById('musicModal');
-            const closeModalBtn = document.getElementById('closeModal');
-            const musicItems = document.querySelectorAll('.music-item');
-
-            burgerIcon.addEventListener('click', () => {
-                musicModal.classList.add('active');
-            });
-
+            document.getElementById('burgerIcon').addEventListener('click', () => musicModal.classList.add('active'));
+            document.getElementById('closeModal').addEventListener('click', () => musicModal.classList.remove('active'));
             musicModal.addEventListener('click', (e) => {
-                if (e.target === musicModal) {
-                    musicModal.classList.remove('active');
-                }
+                if (e.target === musicModal) musicModal.classList.remove('active');
             });
-
-            closeModalBtn.addEventListener('click', () => {
-                musicModal.classList.remove('active');
-            });
-
-            musicItems.forEach(item => {
+            document.querySelectorAll('.music-item').forEach(item => {
                 item.addEventListener('click', () => {
-                    const src = item.getAttribute('data-src');
-                    music.src = src;
-                    
-                    musicItems.forEach(m => m.classList.remove('active'));
-                    item.classList.add('active');
-
-                    music.play().then(() => {
-                        playIcon.style.display = 'none';
-                        pauseIcon.style.display = 'block';
-                        isPlaying = true;
-                    }).catch(e => console.log("Play failed:", e));
-
+                    playSong(item.getAttribute('data-src'));
                     musicModal.classList.remove('active');
                 });
             });
 
-            // --- SCROLL REVEAL OBSERVER ---
-            const revealElements = document.querySelectorAll('.scroll-reveal');
-            const revealObserver = new IntersectionObserver((entries, observer) => {
+            // --- IN-PAGE LINKS (JS smooth scroll; CSS scroll-behavior fights ScrollTrigger's pinning) ---
+            document.querySelectorAll('a[href^="#"]').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const target = document.querySelector(link.getAttribute('href'));
+                    if (!target) return;
+                    e.preventDefault();
+                    const offset = target.id === 'drawing' ? 0 : 62;
+                    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({ top: Math.max(0, top), behavior: reduceMotion ? 'auto' : 'smooth' });
+                });
+            });
+
+            // --- SCROLL PROGRESS BAR ---
+            const progressBar = document.getElementById('progressBar');
+            function updateProgress() {
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                progressBar.style.width = (docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0) + '%';
+            }
+            window.addEventListener('scroll', updateProgress, { passive: true });
+            updateProgress();
+
+            // --- SIDE NAV ACTIVE SECTION ---
+            const sideDots = document.querySelectorAll('.side-dot');
+            const navObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
+                        sideDots.forEach(d => d.classList.toggle('active', d.dataset.section === entry.target.id));
                     }
                 });
-            }, {
-                root: null,
-                threshold: 0.1,
-                rootMargin: "0px 0px -50px 0px"
+            }, { rootMargin: '-45% 0px -45% 0px' });
+            document.querySelectorAll('main .section').forEach(s => navObserver.observe(s));
+
+            // --- HEART BURST ---
+            const BURST_COLORS = ['#6c3fa0', '#9d5fc0', '#c9a0e8', '#e8a3d6', '#b98bdb'];
+            function burstHearts(x, y, count) {
+                if (!hasGsap || reduceMotion) return;
+                for (let i = 0; i < count; i++) {
+                    const el = document.createElement('span');
+                    el.className = 'burst-heart';
+                    el.textContent = '♥';
+                    el.style.left = x + 'px';
+                    el.style.top = y + 'px';
+                    el.style.color = BURST_COLORS[i % BURST_COLORS.length];
+                    el.style.fontSize = (12 + Math.random() * 20) + 'px';
+                    document.body.appendChild(el);
+                    const angle = Math.random() * Math.PI * 2;
+                    const dist = 70 + Math.random() * 190;
+                    gsap.fromTo(el,
+                        { xPercent: -50, yPercent: -50, x: 0, y: 0, scale: 0.3, opacity: 1 },
+                        {
+                            x: Math.cos(angle) * dist,
+                            y: Math.sin(angle) * dist - 80,
+                            scale: 1,
+                            rotation: gsap.utils.random(-45, 45),
+                            opacity: 0,
+                            duration: gsap.utils.random(1.2, 2),
+                            ease: 'power2.out',
+                            onComplete: () => el.remove()
+                        });
+                }
+            }
+
+            const centerOf = el => {
+                const r = el.getBoundingClientRect();
+                return [r.left + r.width / 2, r.top + r.height / 2];
+            };
+
+            // --- TOGETHER COUNTER ---
+            document.getElementById('sinceLabel').textContent = 'together since ' +
+                TOGETHER_SINCE.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+            const countEls = {};
+            document.querySelectorAll('.count-num').forEach(el => { countEls[el.dataset.unit] = el; });
+            function tick() {
+                const s = Math.max(0, Math.floor((Date.now() - TOGETHER_SINCE.getTime()) / 1000));
+                countEls.days.textContent = Math.floor(s / 86400);
+                countEls.hours.textContent = String(Math.floor((s % 86400) / 3600)).padStart(2, '0');
+                countEls.minutes.textContent = String(Math.floor((s % 3600) / 60)).padStart(2, '0');
+                countEls.seconds.textContent = String(s % 60).padStart(2, '0');
+            }
+            tick();
+            setInterval(tick, 1000);
+
+            // --- THANK-YOU CARDS ---
+            const thanksCards = document.querySelectorAll('.thanks-card');
+            const thanksDone = document.getElementById('thanksDone');
+            let thanksCelebrated = false;
+            thanksCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const open = card.classList.toggle('is-open');
+                    card.setAttribute('aria-pressed', String(open));
+                    if (open) burstHearts(...centerOf(card), 8);
+                    const allOpen = [...thanksCards].every(c => c.classList.contains('is-open'));
+                    if (allOpen && !thanksCelebrated) {
+                        thanksCelebrated = true;
+                        thanksDone.hidden = false;
+                        requestAnimationFrame(() => requestAnimationFrame(() => thanksDone.classList.add('show')));
+                        setTimeout(() => burstHearts(...centerOf(document.querySelector('.thanks-grid')), 36), 350);
+                    }
+                });
             });
-            
-            revealElements.forEach(el => revealObserver.observe(el));
+
+            // --- ONE LAST THING ---
+            const lastBtn = document.getElementById('lastThingBtn');
+            const lastMsg = document.getElementById('lastThingMsg');
+            lastBtn.addEventListener('click', () => {
+                lastMsg.hidden = false;
+                requestAnimationFrame(() => requestAnimationFrame(() => lastMsg.classList.add('show')));
+                burstHearts(...centerOf(lastBtn), 40);
+            });
+
+            // --- AMBIENT FLOATING HEARTS ---
+            function initAmbientHearts() {
+                const canvas = document.getElementById('ambientCanvas');
+                const ctx = canvas.getContext('2d');
+
+                function resize() {
+                    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+                    canvas.width = window.innerWidth * dpr;
+                    canvas.height = window.innerHeight * dpr;
+                    canvas.style.width = window.innerWidth + 'px';
+                    canvas.style.height = window.innerHeight + 'px';
+                    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                }
+                resize();
+                window.addEventListener('resize', resize);
+
+                function spawnHeart(randomY) {
+                    return {
+                        x: Math.random() * window.innerWidth,
+                        y: randomY ? Math.random() * window.innerHeight : window.innerHeight + 30,
+                        size: 8 + Math.random() * 13,
+                        speed: 0.22 + Math.random() * 0.42,
+                        sway: Math.random() * 1.2 - 0.6,
+                        swaySeed: Math.random() * Math.PI * 2,
+                        opacity: 0.1 + Math.random() * 0.25,
+                        color: Math.random() > 0.5 ? '#b98bdb' : '#e2a6ff'
+                    };
+                }
+
+                const hearts = Array.from({ length: window.innerWidth < 700 ? 12 : 22 }, () => spawnHeart(true));
+
+                function drawHeart(p, t) {
+                    const sway = Math.sin(t * 0.0006 + p.swaySeed) * p.sway * 22;
+                    const s = p.size / 16;
+                    ctx.save();
+                    ctx.translate(p.x + sway, p.y);
+                    ctx.scale(s, s);
+                    ctx.beginPath();
+                    ctx.moveTo(0, 4);
+                    ctx.bezierCurveTo(0, 0, -8, 0, -8, -4);
+                    ctx.bezierCurveTo(-8, -8, 0, -8, 0, -2);
+                    ctx.bezierCurveTo(0, -8, 8, -8, 8, -4);
+                    ctx.bezierCurveTo(8, 0, 0, 0, 0, 4);
+                    ctx.closePath();
+                    ctx.fillStyle = p.color;
+                    ctx.globalAlpha = p.opacity;
+                    ctx.fill();
+                    ctx.restore();
+                }
+
+                function frame(t) {
+                    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+                    hearts.forEach(p => {
+                        p.y -= p.speed;
+                        if (p.y < -20) Object.assign(p, spawnHeart(false));
+                        drawHeart(p, t);
+                    });
+                    requestAnimationFrame(frame);
+                }
+                requestAnimationFrame(frame);
+            }
+
+            // --- CURSOR HEART TRAIL (desktop only) ---
+            function initCursorTrail() {
+                let lastTime = 0;
+                window.addEventListener('mousemove', (e) => {
+                    const now = performance.now();
+                    if (now - lastTime < 70) return;
+                    lastTime = now;
+                    const heart = document.createElement('span');
+                    heart.className = 'cursor-heart';
+                    heart.textContent = '♥';
+                    heart.style.left = e.clientX + 'px';
+                    heart.style.top = e.clientY + 'px';
+                    heart.style.setProperty('--drift', (Math.random() * 40 - 20) + 'px');
+                    document.body.appendChild(heart);
+                    heart.addEventListener('animationend', () => heart.remove());
+                });
+            }
+
+            if (!reduceMotion) initAmbientHearts();
+            if (!reduceMotion && finePointer) initCursorTrail();
+
+            if (!animate) return;
+
+            // ================= SCROLL ANIMATIONS (GSAP) =================
+            gsap.registerPlugin(ScrollTrigger);
+            ScrollTrigger.config({ ignoreMobileResize: true });
+
+            // --- 1. The drawing: scrolling draws the line art while the story plays alongside ---
+            const drawingSection = document.getElementById('drawing');
+            drawingSection.classList.add('is-animated');
+
+            const inkPaths = gsap.utils.toArray('.ink path');
+            const heartLine = document.querySelector('.heart-line');
+            const heartFill = document.querySelector('.heart-fill');
+            const storyLines = gsap.utils.toArray('.story-line');
+            const drawCount = document.querySelector('.draw-count');
+
+            // gap is slightly longer than the path so no round-cap dot shows before a stroke starts
+            const hideStroke = p => {
+                const len = p.getTotalLength();
+                p.style.strokeDasharray = `${len} ${len + 2}`;
+                p.style.strokeDashoffset = len + 1;
+                return len;
+            };
+            const lengths = inkPaths.map(hideStroke);
+            hideStroke(heartLine);
+            const totalLength = lengths.reduce((a, b) => a + b, 0);
+
+            const titleEl = document.querySelector('.finale-title');
+            const titleText = titleEl.textContent.trim();
+            titleEl.textContent = '';
+            titleEl.setAttribute('aria-label', titleText);
+            titleText.split(' ').forEach((word, wi, words) => {
+                const wordEl = document.createElement('span');
+                wordEl.className = 'word';
+                wordEl.setAttribute('aria-hidden', 'true');
+                [...word].forEach(c => {
+                    const ch = document.createElement('span');
+                    ch.className = 'ch';
+                    ch.textContent = c;
+                    wordEl.appendChild(ch);
+                });
+                titleEl.appendChild(wordEl);
+                if (wi < words.length - 1) titleEl.appendChild(document.createTextNode(' '));
+            });
+
+            gsap.set('.ink', { stroke: '#2b1d38' });
+            gsap.set(heartFill, { opacity: 0 });
+            gsap.set(storyLines[0], { autoAlpha: 1 });
+
+            const DRAW = 10;
+            const FINALE = DRAW + 0.2;
+            const seg = DRAW / storyLines.length;
+            const tl = gsap.timeline({ defaults: { ease: 'none' } });
+
+            let cursor = 0;
+            inkPaths.forEach((p, i) => {
+                const d = DRAW * lengths[i] / totalLength;
+                tl.to(p, { strokeDashoffset: 0, duration: d }, cursor);
+                cursor += d;
+            });
+
+            tl.to('.draw-hint', { autoAlpha: 0, duration: 0.4 }, 0.1);
+            tl.fromTo('.draw-meter-fill', { scaleX: 0 }, { scaleX: 1, duration: DRAW }, 0);
+
+            storyLines.forEach((line, i) => {
+                if (i > 0) tl.fromTo(line, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45 }, i * seg);
+                const outAt = i === storyLines.length - 1 ? FINALE : (i + 1) * seg - 0.45;
+                tl.to(line, { autoAlpha: 0, y: -24, duration: 0.45 }, outAt);
+            });
+
+            tl.to('.draw-meter', { autoAlpha: 0, duration: 0.3 }, FINALE);
+            tl.to(heartLine, { strokeDashoffset: 0, duration: 0.9 }, FINALE);
+            tl.to('.ink', { stroke: '#6c3fa0', duration: 1 }, FINALE + 0.2);
+            tl.to(heartFill, { opacity: 1, duration: 0.6 }, FINALE + 0.8);
+            tl.fromTo('.finale-kicker', { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4 }, FINALE + 0.7);
+            tl.fromTo('.finale-title .ch',
+                { autoAlpha: 0, y: 30, rotationX: -70, transformPerspective: 600 },
+                { autoAlpha: 1, y: 0, rotationX: 0, duration: 0.45, stagger: 0.035 }, FINALE + 0.9);
+            tl.fromTo('.finale-sub', { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5 }, FINALE + 1.9);
+            tl.fromTo('.finale-cue', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, FINALE + 2.3);
+            tl.to({}, { duration: 1 });
+
+            let finaleBurst = false;
+            tl.eventCallback('onUpdate', () => {
+                const time = tl.time();
+                const label = String(Math.min(storyLines.length, Math.floor(time / seg) + 1)).padStart(2, '0') +
+                    ' / ' + String(storyLines.length).padStart(2, '0');
+                if (drawCount.textContent !== label) drawCount.textContent = label;
+                if (time > FINALE + 1 && !finaleBurst) {
+                    finaleBurst = true;
+                    burstHearts(...centerOf(heartLine), 28);
+                }
+                if (time < FINALE) finaleBurst = false;
+            });
+
+            ScrollTrigger.create({
+                animation: tl,
+                trigger: drawingSection,
+                start: 'top top',
+                end: () => '+=' + Math.round(window.innerHeight * 8),
+                pin: '.drawing-stage',
+                scrub: 1,
+                anticipatePin: 1,
+                invalidateOnRefresh: true
+            });
+
+            // --- 2. Four months: photo opens up, counter slides in ---
+            gsap.fromTo('.us-photo',
+                { clipPath: 'inset(16% 12% 16% 12% round 12px)' },
+                {
+                    clipPath: 'inset(0% 0% 0% 0% round 12px)', ease: 'none',
+                    scrollTrigger: { trigger: '.us-section', start: 'top 85%', end: 'center 60%', scrub: true }
+                });
+            gsap.fromTo('.us-photo img', { yPercent: -6 }, {
+                yPercent: 6, ease: 'none',
+                scrollTrigger: { trigger: '.us-photo', start: 'top bottom', end: 'bottom top', scrub: true }
+            });
+            gsap.from('.us-text > *', {
+                opacity: 0, y: 30, duration: 0.8, stagger: 0.12, ease: 'power3.out',
+                scrollTrigger: { trigger: '.us-text', start: 'top 80%' }
+            });
+
+            // --- 3. Letter: words light up as you read ---
+            document.querySelectorAll('.letter-body p').forEach(p => {
+                const words = p.textContent.trim().split(/\s+/);
+                p.textContent = '';
+                words.forEach((word, i) => {
+                    const span = document.createElement('span');
+                    span.className = 'w';
+                    span.textContent = word;
+                    p.appendChild(span);
+                    if (i < words.length - 1) p.appendChild(document.createTextNode(' '));
+                });
+            });
+            gsap.fromTo('.letter-body .w', { opacity: 0.12 }, {
+                opacity: 1, ease: 'none', stagger: 0.05,
+                scrollTrigger: { trigger: '.letter-body', start: 'top 75%', end: 'bottom 50%', scrub: 0.5 }
+            });
+            gsap.from('.letter-greeting, .wax-seal', {
+                opacity: 0, y: 20, duration: 0.8, stagger: 0.1, ease: 'power3.out',
+                scrollTrigger: { trigger: '.letter-paper', start: 'top 80%' }
+            });
+            gsap.from('.letter-sign', {
+                opacity: 0, x: 30, duration: 0.9, ease: 'power3.out',
+                scrollTrigger: { trigger: '.letter-sign', start: 'top 90%' }
+            });
+
+            // --- generic reveals ---
+            gsap.utils.toArray('.reveal').forEach(el => {
+                gsap.from(el, {
+                    opacity: 0, y: 36, duration: 0.9, ease: 'power3.out',
+                    scrollTrigger: { trigger: el, start: 'top 88%' }
+                });
+            });
+
+            // --- 4. Thank-you cards deal in ---
+            gsap.from('.thanks-card', {
+                opacity: 0, y: 50, rotation: i => (i % 2 ? 4 : -4), duration: 0.8, stagger: 0.09, ease: 'power3.out',
+                scrollTrigger: { trigger: '.thanks-grid', start: 'top 82%' }
+            });
+
+            // --- 5. Memories: polaroids straighten as they land ---
+            gsap.utils.toArray('.memory').forEach((memory, i) => {
+                const dir = i % 2 ? 1 : -1;
+                gsap.fromTo(memory.querySelector('.polaroid'),
+                    { rotation: dir * 10, y: 90, opacity: 0.2 },
+                    {
+                        rotation: dir * 2, y: 0, opacity: 1, ease: 'none',
+                        scrollTrigger: { trigger: memory, start: 'top bottom', end: 'center 60%', scrub: 0.6 }
+                    });
+                gsap.fromTo(memory.querySelector('.polaroid-photo img, .polaroid-photo video'),
+                    { yPercent: -5 },
+                    {
+                        yPercent: 5, ease: 'none',
+                        scrollTrigger: { trigger: memory, start: 'top bottom', end: 'bottom top', scrub: true }
+                    });
+                gsap.from(memory.querySelectorAll('.memory-text > *'), {
+                    opacity: 0, y: 28, duration: 0.8, stagger: 0.12, ease: 'power3.out',
+                    scrollTrigger: { trigger: memory, start: 'top 70%' }
+                });
+            });
+
+            // --- 6. Gallery: photos hang on a string and slide sideways (desktop) ---
+            const mm = gsap.matchMedia();
+            mm.add('(min-width: 900px)', () => {
+                const wrap = document.querySelector('.gallery-pin-wrap');
+                const track = document.querySelector('.gallery-track');
+                const items = gsap.utils.toArray('.gallery-item');
+                const amount = () => Math.max(track.scrollWidth - window.innerWidth, 0);
+
+                const tween = gsap.to(track, {
+                    x: () => -amount(),
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: wrap,
+                        start: 'top top',
+                        end: () => '+=' + amount(),
+                        pin: true,
+                        scrub: 1,
+                        invalidateOnRefresh: true,
+                        onUpdate: self => {
+                            const swing = gsap.utils.clamp(-7, 7, self.getVelocity() / -250);
+                            gsap.to(items, { rotation: swing, duration: 0.6, ease: 'power3.out', overwrite: 'auto' });
+                        },
+                        onScrubComplete: () => {
+                            gsap.to(items, { rotation: 0, duration: 1.2, ease: 'elastic.out(1, 0.35)', overwrite: 'auto' });
+                        }
+                    }
+                });
+                return () => tween.kill();
+            });
+            mm.add('(max-width: 899px)', () => {
+                gsap.utils.toArray('.gallery-item').forEach(item => {
+                    gsap.from(item, {
+                        opacity: 0, y: 50, duration: 0.8, ease: 'power3.out',
+                        scrollTrigger: { trigger: item, start: 'top 90%' }
+                    });
+                });
+            });
+
+            // --- 7. Notes: the timeline draws itself ---
+            gsap.fromTo('.timeline-line', { scaleY: 0 }, {
+                scaleY: 1, ease: 'none',
+                scrollTrigger: { trigger: '.timeline', start: 'top 70%', end: 'bottom 70%', scrub: true }
+            });
+            gsap.utils.toArray('.timeline-item').forEach((item, i) => {
+                const wide = window.innerWidth >= 860;
+                gsap.from(item, {
+                    opacity: 0, x: wide ? (i % 2 ? 60 : -60) : 0, y: wide ? 0 : 36, duration: 0.8, ease: 'power3.out',
+                    scrollTrigger: { trigger: item, start: 'top 85%' }
+                });
+            });
+
+            window.addEventListener('load', () => ScrollTrigger.refresh());
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => ScrollTrigger.refresh());
         });
     </script>
 </body>
